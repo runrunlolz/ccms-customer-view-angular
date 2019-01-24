@@ -91,12 +91,21 @@ export default class customerViewCtrl {
 	 */
 	async initData() {
 		const customerInfo = await this.getCustomerInfo();
-		this.initCustomerInfo(customerInfo);
+		const platformList = await this.initPlatform();
+		this.initCustomerInfo(customerInfo, platformList);
 		await this.initAreasData();
 
 		this._$timeout(() => {
 			this.customerViewLoading = false;
 		});
+	}
+
+	/**
+	 * 获取平台信息
+	 * @returns {Promise<*>}
+	 */
+	async initPlatform() {
+		return await customerService.getPlatformList();
 	}
 
 	/**
@@ -128,8 +137,9 @@ export default class customerViewCtrl {
     /**
      * 初始化客户信息
      * @param customerInfo
+     * @param platformList
      */
-	initCustomerInfo(customerInfo) {
+	initCustomerInfo(customerInfo, platformList) {
         const {
             fullName,
             // fullNameSource,
@@ -154,24 +164,53 @@ export default class customerViewCtrl {
             platAccountList
         } = customerInfo;
 
+        const findObjectByKey = (arr, key, platCode) => {
+	        return arr.filter((item, index) => {
+	        	if (item[key] === platCode) {
+	        		return item;
+		        }
+	        });
+        };
+
+	    const customerIdsList = [];
+	    CUSTOMER_PLAT_ID_LIST.forEach(item => {
+		    // 全渠道
+		    if (item.field === 'OMNI') {
+			    customerIdsList.push(item);
+		    }
+
+		    // 普通平台
+		    if (findObjectByKey(platformList, 'platCode', item.field).length > 0) {
+			    customerIdsList.push(item);
+		    }
+	    });
+
+	    this.customerIdsList = customerIdsList;
+
         // 整理用户账号区域
         platAccountList.forEach(plat => {
-	        this.customerIdsList = CUSTOMER_PLAT_ID_LIST.map(item => {
-                if (item.field === 'OMNI') {
-                    item.value = this._uniId;
-                }
-                if (item.field === plat.platCode) {
-                    this.customerOwnedPlatList.push(plat.platCode);
-                    item.value = plat[item.type];
-                }
-                return item;
-            });
-            if (plat.platCode === 'WX') {
-                this.wxAvatarUrl = plat.platAvatar;
-            }
-            if (plat.platCode === 'YOUZAN') {
-                this.yuoZanAvatarUrl = plat.platAvatar;
-            }
+
+	        this.customerIdsList.forEach(item => {
+		        // 全渠道
+		        if (item.field === 'OMNI') {
+			        item.value = this._uniId;
+		        }
+
+		        if (item.field === plat.platCode) {
+			        this.customerOwnedPlatList.push(plat.platCode);
+			        item.value = plat[item.type];
+		        }
+	        });
+
+			// 头像处理: 微信
+			if (plat.platCode === 'WX') {
+			    this.wxAvatarUrl = plat.platAvatar;
+			}
+
+			// 头像处理: 有赞
+			if (plat.platCode === 'YOUZAN') {
+			    this.yuoZanAvatarUrl = plat.platAvatar;
+			}
         });
         // 保存加密信息
         this.encodeMessage = {

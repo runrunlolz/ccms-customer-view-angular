@@ -70,6 +70,9 @@ const setComponentResource = api_prefix => {
         getPlatShopsInfo: genResource(`${api_prefix}customer/shops`),
 
 	    // 获取地址信息
-        getLocationAreas: genResource(`${api_prefix}unificationAreas`)
+        getLocationAreas: genResource(`${api_prefix}unificationAreas`),
+
+	    // 获取平台列表
+        getPlatformList: genResource(`${api_prefix}customer/platform`)
     }
 };

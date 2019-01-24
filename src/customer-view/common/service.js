@@ -86,6 +86,11 @@ function getLocationAreas() {
 	return componentResource.getLocationAreas.query().$promise;
 }
 
+// 获取平台信息
+function getPlatformList() {
+	return componentResource.getPlatformList.query().$promise;
+}
+
 const service = {
 	getCustomerInfo,
 	getCustomerCardInfo,
@@ -102,7 +107,8 @@ const service = {
 	getAreaInfo,
 	getReceiveAddressDecryptMessage,
 	getEvaluationInfo,
-	getLocationAreas
+	getLocationAreas,
+	getPlatformList
 };
 
 export default service;
