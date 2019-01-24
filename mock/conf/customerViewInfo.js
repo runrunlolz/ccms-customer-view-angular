@@ -8,7 +8,7 @@ module.exports = function (configurations) {
 		{
 			request: {
 				method: 'GET',
-				urlPattern: /^\/data-manage-x\/1.0\/customer\/((?!interactive|shops|decrypt|uniId\/receiver\/address)\w)+/
+				urlPattern: /^\/data-manage-x\/1.0\/customer\/((?!interactive|shops|decrypt|platform|uniId\/receiver\/address)\w)+/
 			},
 			response: {
 				status: 200,
@@ -31,6 +31,11 @@ module.exports = function (configurations) {
 							{
 								'platCode': 'OFFLINE',
 								'platAccount': '000001',
+								'platNick': '数云掌门'
+							},
+							{
+								'platCode': 'YOUZAN',
+								'platAccount': '11111111111111111111111111111111111111111',
 								'platNick': '数云掌门'
 							}
 						],

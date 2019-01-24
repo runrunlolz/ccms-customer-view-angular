@@ -40,23 +40,23 @@
 				</dl>
 				<dl class="info-area">
 					<dt>可用积分：</dt>
-					<dd ng-bind="item.availablePoint"></dd>
+					<dd ng-bind="item.availablePoint || 0"></dd>
 				</dl>
 				<dl class="info-area">
 					<dt>即将过期积分：</dt>
-					<dd ng-bind="item.upcomingExpiredPoint"></dd>
+					<dd ng-bind="item.upcomingExpiredPoint || 0"></dd>
 				</dl>
 				<dl class="info-area">
 					<dt>累积获得积分：</dt>
-					<dd ng-bind="item.totalPoint"></dd>
+					<dd ng-bind="item.totalPoint || 0"></dd>
 				</dl>
 				<dl class="info-area">
 					<dt>已消耗积分：</dt>
-					<dd ng-bind="item.consumedPoint"></dd>
+					<dd ng-bind="item.consumedPoint || 0"></dd>
 				</dl>
 				<dl class="info-area">
 					<dt>已过期积分：</dt>
-					<dd ng-bind="item.expiredPoint"></dd>
+					<dd ng-bind="item.expiredPoint || 0"></dd>
 				</dl>
 			</div>
 		</li>
