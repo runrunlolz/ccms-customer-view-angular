@@ -60,6 +60,6 @@
         "ccms-svg-icons": "0.0.11",
         "gridmanager-angular-1.x": "^0.1.8",
         "gridmanager-ccms-skin": "^0.1.2",
-        "jeasy": "0.0.5"
+        "jeasy": "0.0.8"
     }
 }

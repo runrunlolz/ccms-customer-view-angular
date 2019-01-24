@@ -22,24 +22,8 @@ module.exports = {
 			"platCode": "OFFLINE"
 		},
 		{
-			"platName": "苏宁",
-			"platCode": "SUNING"
-		},
-		{
 			"platName": "淘宝",
 			"platCode": "TAOBAO"
-		},
-		{
-			"platName": "微信",
-			"platCode": "WX"
-		},
-		{
-			"platName": "一号店",
-			"platCode": "YHD"
-		},
-		{
-			"platName": "有赞",
-			"platCode": "YOUZAN"
 		}
 	]
 };

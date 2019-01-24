@@ -164,14 +164,6 @@ export default class customerViewCtrl {
             platAccountList
         } = customerInfo;
 
-        const findObjectByKey = (arr, key, platCode) => {
-	        return arr.filter((item, index) => {
-	        	if (item[key] === platCode) {
-	        		return item;
-		        }
-	        });
-        };
-
 	    const customerIdsList = [];
 	    CUSTOMER_PLAT_ID_LIST.forEach(item => {
 		    // 全渠道
@@ -180,7 +172,7 @@ export default class customerViewCtrl {
 		    }
 
 		    // 普通平台
-		    if (findObjectByKey(platformList, 'platCode', item.field).length > 0) {
+		    if (jeasy.find(platformList, 'platCode', item.field).length > 0) {
 			    customerIdsList.push(item);
 		    }
 	    });
