@@ -9,7 +9,7 @@ import { Inject } from 'angular-es-utils';
 import { componentResource } from '../common/resource';
 import service from '../common/service';
 
-@Inject('$timeout')
+@Inject('$timeout', '$gridManager')
 export default class ReceiveAddressCtrl {
 	constructor() {
 		this.init();
@@ -85,7 +85,10 @@ export default class ReceiveAddressCtrl {
 		};
 
 		this.getDecrypt = (field, row) => {
-			service.getReceiveAddressDecryptMessage(this.uniId, row.uuId, field).then(res => {
+			// 获取分页信息
+			const pageData = this._$gridManager.get('receiveAddressInfo').pageData;
+
+			service.getReceiveAddressDecryptMessage(this.uniId, row.uuId, field, pageData.pageNum, pageData.pageSize).then(res => {
 				row[field] = res.data;
 				field === 'mobile' ? this.showMobile = false : this.showName = false;
 			}).catch(err => {

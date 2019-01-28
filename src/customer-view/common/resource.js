@@ -22,7 +22,7 @@ const setComponentResource = api_prefix => {
         receiveAddress: genResource(`${api_prefix}customer/:uniId/receiver/address`),
 
         // 常用收货地址获取明文信息
-        receiveAddressDecryptMessage: genResource(`${api_prefix}customer/receiver/decrypt/:uniId/:uuId/:field`),
+        receiveAddressDecryptMessage: genResource(`${api_prefix}customer/receiver/decrypt/:uniId/:uuId/:field?pageNum=:pageNum&pageSize=:pageSize`),
 
         // 会员卡信息
         customerCard: genResource(`${api_prefix}customerCard/card/:uniId`),
