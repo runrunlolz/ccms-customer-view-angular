@@ -71,8 +71,8 @@ function getAreaInfo() {
 }
 
 // 获取常用收货地址信息明文
-function getReceiveAddressDecryptMessage(uniId, uuId, field) {
-	return componentResource.receiveAddressDecryptMessage.get({uniId, uuId, field}).$promise;
+function getReceiveAddressDecryptMessage(uniId, uuId, field, pageNum, pageSize) {
+	return componentResource.receiveAddressDecryptMessage.get({uniId, uuId, field, pageNum, pageSize}).$promise;
 }
 
 // 获取评价信息

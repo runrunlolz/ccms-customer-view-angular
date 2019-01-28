@@ -8,7 +8,7 @@ module.exports = function (configurations) {
 		{
 			request: {
 				method: 'GET',
-				urlPattern: /^\/data-manage-x\/1.0\/customer\/((?!interactive|shops|decrypt|platform|uniId\/receiver\/address)\w)+/
+				urlPattern: /^\/data-manage-x\/1.0\/customer\/((?!interactive|shops|decrypt|platform|uniId\/receiver\/address|receiver\/decrypt)\w)+/
 			},
 			response: {
 				status: 200,
