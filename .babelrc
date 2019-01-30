@@ -3,10 +3,7 @@
 		[
 			"@babel/preset-env",
 			{
-				"targets": {
-					"chrome": "38",
-					"firefox": "56"
-				},
+				"targets": "chrome>38, firefox>56",
 				"useBuiltIns": "entry"
 			}
 		]
