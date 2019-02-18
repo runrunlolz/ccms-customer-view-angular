@@ -39,13 +39,13 @@ export default class customerCardCtrl {
 		service.getTagsInfo(uniId)
 			.then(res => {
 				// 筛选自定义标签和云标签
-				// res.tagList.filter(item => {
-				// 	if (item.tagType === 'system') {
-				// 		this.cloudTag.push(item);
-				// 	} else {
-				// 		this.defineTag.push(item);
-				// 	}
-				// });
+				res.tagList.filter(item => {
+					if (item.tagType === 'system') {
+						this.cloudTag.push(item);
+					} else {
+						this.defineTag.push(item);
+					}
+				});
 				this.showLoading = false;
 				this.rfmList = res.rfmList;
 				this.rfmList.forEach(item => {

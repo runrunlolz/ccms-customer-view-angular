@@ -4,7 +4,6 @@
  */
 
 import { componentResource } from './resource';
-import genResource from "angular-es-utils/rs-generator/index";
 
 // 获取会员基本信息
 function getCustomerInfo(uniId) {

@@ -1,30 +1,33 @@
 const path = require('path');
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const srcDir = path.join(__dirname, './src');
 module.exports = {
 	resolve: {
-		extensions: ['.js', '.json', '.less', '.html'],
-		enforceExtension: false,
-		modules: ['node_modules', './']
+		extensions: ['*', '.js', '.json', '.less', '.html'],
+		modules: ['node_modules', 'src']
 	},
 	module: {
-		rules: [{
-			test: /\.js$/,
-			exclude: /node_modules/,
-			loader: 'babel-loader'
-		}, {
-			test: /\.less/,
-			include: srcDir,
-			use: ExtractTextWebpackPlugin.extract({
-				use: [{
-					loader: 'css-loader',
-					options: {
-						url: true, // 启用/禁用 url() 处理
-						minimize: true, // 启用/禁用 压缩
-						sourceMap: false // 启用/禁用 Sourcemaps
-					}
-				},
+		rules: [
+			{
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: ["babel-loader"]
+			},
+			{
+				test: /\.less/,
+				include: srcDir,
+				use: [
+					{
+						loader: MiniCssExtractPlugin.loader
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							url: true, // 启用/禁用 url() 处理
+							sourceMap: false // 启用/禁用 Sourcemaps
+						}
+					},
 					{
 						loader: 'resolve-url-loader'
 					},
@@ -33,8 +36,8 @@ module.exports = {
 						options: {
 							sourceMap: false // 启用/禁用 Sourcemaps
 						}
-					}]
-			})
+					}
+				]
 		}, {
             test: /\.html$/,
             use: [{
@@ -48,7 +51,9 @@ module.exports = {
             exclude: /(node_modules|bower_components)/
 		}, {
             test: /\.json$/,
-            loaders: ['json-loader']
+			use: [{
+				loader: 'json-loader'
+			}]
         }, {
 			test: /\.(jpe?g|png|gif|svg)$/i,
 			use: [{
