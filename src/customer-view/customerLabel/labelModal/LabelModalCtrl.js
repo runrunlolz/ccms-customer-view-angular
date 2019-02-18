@@ -25,13 +25,14 @@ export default class labelModalCtrl {
 			tagInfo: this.tag, // 标签
 			type: this.type // 标签类型
 		};
-	}
 
-	/**
-	 * 获取标签列表
-	 */
-	getTags() {
-		//
+		// todo 这块是调试用的
+		this.searchPlatformConf = [
+			{
+				title: '测试一下',
+				value: 1
+			}
+		]
 	}
 
 	/**
