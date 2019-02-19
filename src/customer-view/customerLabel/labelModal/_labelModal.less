@@ -11,12 +11,13 @@
 		dd {
 			display: inline-block;
 			vertical-align: top;
-			height: 26px;
+			height: 30px;
 			line-height: 26px;
 			font-size: 12px;
 			color: #4c4c4c;
 		}
 		dt {
+			line-height: 30px;
 			text-align: right;
 			width: 60px;
 		}
@@ -24,9 +25,15 @@
 			margin-left: 0;
 			width: 250px;
 			text-align: left;
-			cc-dropdown-select {
+			cc-dropdown-select, cc-dropdown-multiselect, .date-picker-holder, .label-value-number {
 				width: 250px;
 			}
+			.label-tips {
+				line-height: 30px;
+			}
+		}
+		.disableEdit {
+			pointer-events: none;
 		}
 	}
 }

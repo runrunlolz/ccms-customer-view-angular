@@ -6,6 +6,30 @@
  */
 
 module.exports = {
+	// 标签类型列表 todo
+	'/data-manage-x/1.0/customerTag/tagTypes': [
+		{
+			'tagValueCode': 0,
+			'tagValueName': '日期型'
+		},
+		{
+			'tagValueCode': 1,
+			'tagValueName': '字符输入型'
+		},
+		{
+			'tagValueCode': 2,
+			'tagValueName': '数值型'
+		},
+		{
+			'tagValueCode': 3,
+			'tagValueName': '内容选择单选型'
+		},
+		{
+			'tagValueCode': 4,
+			'tagValueName': '内容选择多选型'
+		}
+	],
+
 	'/data-manage-x/1.0/customerTag/:uniId': {
 		get: {
 			'tagList': [
@@ -13,25 +37,71 @@ module.exports = {
 					'tagId': '1',
 					'tagName': '云标签1',
 					'tagValue': '我是云标签1',
-					'tagType': 'system'
+					'tagType': 'system',
+					'tagValueType': 0
 				},
 				{
 					'tagId': '2',
 					'tagName': '云标签2',
 					'tagValue': '我是云标签2',
-					'tagType': 'system'
+					'tagType': 'system',
+					'tagValueType': 0
 				},
 				{
 					'tagId': '3',
-					'tagName': '自定义标签1',
-					'tagValue': '我是自定义标签1',
-					'tagType': 'define'
+					'tagName': '自定义日期型标签',
+					'tagValue': '2019-02-02',
+					'tagType': 'define',
+					'tagValueType': 0
 				},
 				{
 					'tagId': '4',
-					'tagName': '自定义标签2',
-					'tagValue': '我是自定义标签2',
-					'tagType': 'define'
+					'tagName': '自定义数值型标签',
+					'tagValue': '33',
+					'tagType': 'define',
+					'tagValueType': 2
+				},
+				{
+					'tagId': '5',
+					'tagName': '自定义字符型标签',
+					'tagValue': 'hello',
+					'tagType': 'define',
+					'tagValueType': 1
+				},
+				{
+					'tagId': '6',
+					'tagName': '自定义单选型标签',
+					'tagValue': '标签值1',
+					'tagType': 'define',
+					'tagValueType': 3
+				},
+				{
+					'tagId': '7',
+					'tagName': '自定义多选型标签',
+					'tagValue': '1,2',
+					'tagType': 'define',
+					'tagValueType': 4
+				},
+				{
+					'tagId': '8',
+					'tagName': '自定义数值型标签1',
+					'tagValue': '3434',
+					'tagType': 'define',
+					'tagValueType': 2
+				},
+				{
+					'tagId': '9',
+					'tagName': '自定义单选型标签1',
+					'tagValue': '标签值3',
+					'tagType': 'define',
+					'tagValueType': 3
+				},
+				{
+					'tagId': '10',
+					'tagName': '自定义多选型标签1',
+					'tagValue': '2,3',
+					'tagType': 'define',
+					'tagValueType': 4
 				}
 			],
 			'rfmList': [

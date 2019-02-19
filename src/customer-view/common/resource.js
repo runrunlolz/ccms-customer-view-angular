@@ -48,6 +48,9 @@ const setComponentResource = api_prefix => {
         // 评价信息
         evaluationInfo: genResource(`${api_prefix}order/rate`),
 
+		// 获取标签类型列表 todo
+		getLabelTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
+
         // 自定义标签修改
         updateTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
 
