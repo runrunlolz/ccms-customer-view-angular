@@ -7,12 +7,11 @@
 
 import { Inject } from 'angular-es-utils';
 import service from '../common/service';
-import labelModal from './labelModal/labelModal.tpl.html';
-import labelModalFooter from './labelModal/labelModalFooter.tpl.html';
+import labelModal from './labelModal/labelModal.str.html';
 import labelModalCtrl from './labelModal/LabelModalCtrl';
 import { PLAT_MAP } from '../constants/index';
 
-@Inject('$scope', '$ccModal')
+@Inject('$scope', '$ccModal', '$q')
 export default class customerCardCtrl {
 	constructor() {
 		this.init();
@@ -71,6 +70,7 @@ export default class customerCardCtrl {
 			scope: this._$scope,
 			title: openType === 'add' ? '新增标签' : '编辑标签',
 			fullscreen: false,
+			hasFooter: true,
 			locals: {
 				data: {
 					uniId: uniId,
@@ -84,7 +84,6 @@ export default class customerCardCtrl {
 				'overflow': 'inherit'
 			},
             __body: labelModal,
-			__footer: labelModalFooter,
 			controller: labelModalCtrl,
 			controllerAs: 'vm'
 		}).open();

@@ -5,7 +5,7 @@
 
 import angular from 'angular';
 import iconList from './assets/iconfont';
-import template from './customer_view.tpl.html';
+import template from './customer_view.str.html';
 import controller from './CustomerViewCtrl';
 import './customerViewModal/customer_view_modal_style.less';
 import './customer_view_style.less';

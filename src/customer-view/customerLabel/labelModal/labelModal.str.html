@@ -1,4 +1,5 @@
-<form class="label-modal-container" name="vm.form">
+<cc-loading class="label-loading" ng-if="vm.showLoading"></cc-loading>
+<form class="label-modal-container" name="vm.form" ng-if="!vm.showLoading">
 	<dl class="label-area">
 		<dt>标签：</dt>
 		<dd ng-if="vm.modalType === 'add'">
@@ -77,4 +78,10 @@
 			</span>
 		</dd>
 	</dl>
+
+	<div class="footer-modal">
+		<a>
+			<span class="delete-tag" ng-if="vm.modalType === 'edit'" ng-click="vm.deleteTag()">删除标签</span>
+		</a>
+	</div>
 </form>

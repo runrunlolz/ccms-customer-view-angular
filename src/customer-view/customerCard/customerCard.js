@@ -5,7 +5,7 @@
  * @since 2018/11/10
  */
 import angular from 'angular';
-import template from './customerCard.tpl.html';
+import template from './customerCard.str.html';
 import controller from './CustomerCardCtrl';
 import './_customerCard.less';
 

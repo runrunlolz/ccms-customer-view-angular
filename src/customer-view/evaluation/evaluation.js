@@ -6,7 +6,7 @@
  */
 
 import angular from 'angular';
-import template from './evaluation.tpl.html';
+import template from './evaluation.str.html';
 import controller from './EvaluationCtrl';
 import './_evaluation.less';
 

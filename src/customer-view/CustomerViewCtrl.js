@@ -3,7 +3,7 @@
  * @date on 2018/11/07
  */
 import { Inject } from 'angular-es-utils';
-import customerViewBody from './customerViewModal/customerViewModalBody.tpl.html';
+import customerViewBody from './customerViewModal/customerViewModalBody.str.html';
 import customerViewCtrl from './customerViewModal/CustomerViewModalCtrl';
 import { setEnvName } from "./common/resource";
 

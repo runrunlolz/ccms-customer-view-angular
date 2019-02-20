@@ -55,7 +55,7 @@ const setComponentResource = api_prefix => {
         updateTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
 
         // 自定义标签删除
-        deleteTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
+        deleteTag: genResource(`${api_prefix}customerTag/:uniId/defineTag/:tagId`),
 
         // 自定义标签新增
         addTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),

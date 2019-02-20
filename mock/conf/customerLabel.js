@@ -261,12 +261,14 @@ module.exports = {
 	},
 
 	'/data-manage-x/1.0/customerTag/:uniId/defineTag': {
-		delete: {},
 		put: {},
 		post: {
 			tagId: '11',
 			tagName: '标签值',
 			tagType: '日期型'
 		}
+	},
+	'/data-manage-x/1.0/customerTag/:uniId/defineTag/:tagId': {
+		delete: {},
 	}
 };

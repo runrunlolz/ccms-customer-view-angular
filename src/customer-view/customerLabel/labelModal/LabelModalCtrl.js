@@ -20,6 +20,8 @@ export default class labelModalCtrl {
 	 * 初始化;
 	 */
 	init() {
+		// 默认loading
+		this.showLoading = false;
 		// modal类型：编辑or新建
 		this.modalType = this._data.openType;
 
@@ -144,15 +146,20 @@ export default class labelModalCtrl {
 	 * 删除标签
 	 */
 	deleteTag() {
+		this.showLoading = true;
 		this._$ccModal.confirm('确定删除标签？').open().result
 			.then(() => {
 				service.deleteTag(this._data.uniId, this._data.tagInfo.tagId).then(() => {
 					this._$ccTips.success('删除成功');
+					this.showLoading = false;
 					this._modalInstance.ok();
 				}).catch(err => {
+					this.showLoading = false;
 					console.error(err);
 				});
-			});
+			}).catch(() => {
+				this.showLoading = false;
+		});
 	}
 
 	/**
@@ -244,20 +251,16 @@ export default class labelModalCtrl {
 		const saveMethod = saveType ? 'addTag' : 'updateTag';
 
 		if (this.validator()) {
+			this.showLoading = true;
 			service[saveMethod](this._data.uniId, saveParams).then(() => {
 				this._$ccTips.success('保存成功');
+				this.showLoading = false;
 				this._modalInstance.ok();
 			}).catch(err => {
 				this._$ccTips.error('保存失败');
+				this.showLoading = false;
 				console.error(err);
 			});
 		}
-	}
-
-	/**
-	 * 取消保存关闭modal
-	 */
-	cancel() {
-		this._modalInstance.ok();
 	}
 }

@@ -6,7 +6,7 @@
  */
 
 import angular from 'angular';
-import template from './interactive.tpl.html';
+import template from './interactive.str.html';
 import controller from './InteractiveCtrl';
 import './_interactive.less';
 

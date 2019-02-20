@@ -5,7 +5,7 @@
  * @since 2018/11/10
  */
 import angular from 'angular';
-import template from './receiveAdress.tpl.html';
+import template from './receiveAdress.str.html';
 import controller from './ReceiveAddressCtrl';
 import './_receiveAddress.less';
 
