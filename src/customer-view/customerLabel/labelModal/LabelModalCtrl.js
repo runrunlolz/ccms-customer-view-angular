@@ -42,8 +42,7 @@ export default class labelModalCtrl {
 			// 转换标签类型名称
 			this.changeTagTypeToName(this.tagValueType);
 			// 编辑时标签值
-			this.tagValue = this._data.tagInfo && this._data.tagInfo.tagValue || '';
-			this.formatData(this.tagValue, 'edit');
+			this.tagValue = this.formatData(this._data.tagInfo.tagValue, 'edit');
 
 		}
 		// todo 这块是调试用的
@@ -216,12 +215,11 @@ export default class labelModalCtrl {
 
 		// 编辑时格式转换
 		if (this.modalType === 'edit' && model === 'edit') {
-			// 日期型
+			// 日期类型处理
 			if (this.tagValueType === 0) {
-				return tagValue && new Date(tagValue);
+				return new Date(tagValue);
 			}
-
-			// 内容多选型
+			// 内容多选型处理
 			if (this.tagValueType === 4) {
 				this.tagValueList = tagValue.split(',');
 				return this.tagValueList;
