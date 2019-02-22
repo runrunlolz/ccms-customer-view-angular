@@ -51,7 +51,7 @@ const setComponentResource = api_prefix => {
 		// 获取标签类型列表 todo
 		getLabelTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
 
-        // 自定义标签修改
+        // 自定义标签修改保存
         updateTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
 
         // 自定义标签删除

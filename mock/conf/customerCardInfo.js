@@ -10,7 +10,7 @@ module.exports = {
 		{
 			cardNumber: '456756747567583',
 			cardName: '至尊黑金卡',
-			grade: '7',
+			grade: '6',
 			gradeName: '黑卡会员',
 			cardPlanId: 1,
 			availablePoint: null,
@@ -24,7 +24,7 @@ module.exports = {
 		{
 			cardNumber: '4569834769457698',
 			cardName: '超级黄金卡',
-			grade: '6',
+			grade: '5',
 			cardPlanId: 2,
 			gradeName: 'ccc',
 			availablePoint: 45645,
@@ -38,7 +38,7 @@ module.exports = {
 		{
 			cardNumber: '364362564624564',
 			cardName: '炫酷白金卡',
-			grade: '5',
+			grade: '4',
 			cardPlanId: 3,
 			gradeName: '白金会员',
 			availablePoint: '',
@@ -52,7 +52,7 @@ module.exports = {
 		{
 			cardNumber: '657465756756',
 			cardName: '低端橙光卡',
-			grade: '2',
+			grade: '3',
 			cardPlanId: 4,
 			gradeName: '橙色会员',
 			availablePoint: 2232,
@@ -66,7 +66,7 @@ module.exports = {
 		{
 			cardNumber: '46767565745334',
 			cardName: '亮眼红宝卡',
-			grade: '3',
+			grade: '2',
 			cardPlanId: 5,
 			gradeName: '红色会员',
 			availablePoint: 23423,
@@ -80,7 +80,7 @@ module.exports = {
 		{
 			cardNumber: '435234324',
 			cardName: '深沉棕摩卡',
-			grade: '4',
+			grade: '1',
 			cardPlanId: 6,
 			gradeName: '棕色会员',
 			availablePoint: 768567,
@@ -94,7 +94,7 @@ module.exports = {
 		{
 			cardNumber: '435234324',
 			cardName: '湛蓝精致卡',
-			grade: '1',
+			grade: '0',
 			cardPlanId: 7,
 			gradeName: '蓝色会员',
 			availablePoint: 768567,
@@ -108,7 +108,7 @@ module.exports = {
 		{
 			cardNumber: '435234324',
 			cardName: '至尊黑金卡',
-			grade: '7',
+			grade: '6',
 			cardPlanId: 8,
 			gradeName: '黑金会员',
 			availablePoint: 768567,
