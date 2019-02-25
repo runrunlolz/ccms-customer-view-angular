@@ -13,8 +13,8 @@ module.exports = {
 			'cityName': '西安市',
 			'district': '360123',
 			'districtName': '碑林区',
-			'fullName': '杨*',
-			'mobile': '131****6765',
+			'fullName': '王*',
+			'mobile': '134****6745',
 			'state': '360000',
 			'stateName': '陕西省',
 			'town': null,
@@ -27,7 +27,21 @@ module.exports = {
 			'cityName': '西安市',
 			'district': '360123',
 			'districtName': '碑林区',
-			'fullName': '杨*',
+			'fullName': '张*',
+			'mobile': '131****2432',
+			'state': '360000',
+			'stateName': '陕西省',
+			'town': null,
+			'townName': null,
+			'tradeCount': 3,
+			'uuId': 'ce0368de-b695-4fce-9727-fb57973bfa71'
+		}, {
+			'address': '龙津镇前进路女人街京庄巷2巷9号',
+			'city': '360100',
+			'cityName': '西安市',
+			'district': '360123',
+			'districtName': '碑林区',
+			'fullName': '刘*',
 			'mobile': '131****6765',
 			'state': '360000',
 			'stateName': '陕西省',
@@ -41,7 +55,7 @@ module.exports = {
 			'cityName': '西安市',
 			'district': '360123',
 			'districtName': '碑林区',
-			'fullName': '杨*',
+			'fullName': '高*',
 			'mobile': '131****6765',
 			'state': '360000',
 			'stateName': '陕西省',
@@ -55,21 +69,7 @@ module.exports = {
 			'cityName': '西安市',
 			'district': '360123',
 			'districtName': '碑林区',
-			'fullName': '杨*',
-			'mobile': '131****6765',
-			'state': '360000',
-			'stateName': '陕西省',
-			'town': null,
-			'townName': null,
-			'tradeCount': 3,
-			'uuId': 'ce0368de-b695-4fce-9727-fb57973bfa71'
-		}, {
-			'address': '龙津镇前进路女人街京庄巷2巷9号',
-			'city': '360100',
-			'cityName': '西安市',
-			'district': '360123',
-			'districtName': '碑林区',
-			'fullName': '杨*',
+			'fullName': '马*',
 			'mobile': '131****6765',
 			'state': '360000',
 			'stateName': '陕西省',
@@ -99,6 +99,6 @@ module.exports = {
 	},
 
 	'/data-manage-x/1.0/customer/receiver/decrypt/:uniId/:uuId/:field': {
-		data: '18392022222'
+		data: '刘涛'
 	}
 };

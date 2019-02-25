@@ -27,13 +27,15 @@ export default class ReceiveAddressCtrl {
 				text: '收货人姓名',
 				key: 'fullName',
 				align: 'left',
-				template: '<span ng-mouseover="vm.showNameEye = true" ng-mouseleave="vm.showNameEye = false">{{row.fullName}} <icon-eye ng-if="index === vm.selectedIndex && vm.showNameEye" ng-click="vm.getDecrypt(\'fullName\', row)"></icon-eye></span>'
+				template: '<span ng-mouseover="vm.showNameEye = true" ng-mouseleave="vm.showNameEye = false">{{row.fullName}} <icon-eye ng-if="index === vm.selectedIndex && vm.showNameEye && !row.hideNameEye" ng-click="vm.getDecrypt(\'fullName\', row, \'show\')"></icon-eye>' +
+					'<icon-miwen ng-if="index === vm.selectedIndex && vm.showNameEye && row.hideNameEye" ng-click="vm.getDecrypt(\'fullName\', row, \'hide\')"></icon-miwen></span>'
 			},
 			{
 				text: '收货人手机',
 				align: 'left',
 				key: 'mobile',
-				template: '<span ng-mouseover="vm.showMobileEye = true" ng-mouseleave="vm.showMobileEye = false">{{row.mobile}} <icon-eye ng-show="index === vm.selectedIndex && vm.showMobileEye" ng-click="vm.getDecrypt(\'mobile\', row)"></icon-eye></span>'
+				template: '<span ng-mouseover="vm.showMobileEye = true" ng-mouseleave="vm.showMobileEye = false">{{row.mobile}} <icon-eye ng-show="index === vm.selectedIndex && vm.showMobileEye && !row.hideMobileEye" ng-click="vm.getDecrypt(\'mobile\', row, \'show\')"></icon-eye>' +
+					'<icon-miwen ng-if="index === vm.selectedIndex && vm.showMobileEye && row.hideMobileEye" ng-click="vm.getDecrypt(\'mobile\', row, \'hide\')"></icon-miwen></span>'
 			},
 			{
 				text: '省份',
@@ -84,16 +86,30 @@ export default class ReceiveAddressCtrl {
 			columnData: receiveAddressData
 		};
 
-		this.getDecrypt = (field, row) => {
-			// 获取分页信息
-			const pageData = this._$gridManager.get('receiveAddressInfo').pageData;
-
-			service.getReceiveAddressDecryptMessage(this.uniId, row.uuId, field, pageData.pageNum, pageData.pageSize).then(res => {
-				row[field] = res.data;
-				field === 'mobile' ? this.showMobile = false : this.showName = false;
-			}).catch(err => {
-				console.error(err.message);
-			});
+		// 查看明文或密文
+		this.getDecrypt = (field, row, type) => {
+			if (field === 'mobile') {
+				row.hideMobileEye = !row.hideMobileEye;
+			} else {
+				row.hideNameEye = !row.hideNameEye;
+			}
+			if (type === 'show') {
+				// 获取分页信息
+				const pageData = this._$gridManager.get('receiveAddressInfo').pageData;
+				// 获取明文数据
+				service.getReceiveAddressDecryptMessage(this.uniId, row.uuId, field, pageData.pageNum, pageData.pageSize).then(res => {
+					row[field] = res.data;
+					field === 'mobile' ? this.showMobile = false : this.showName = false;
+				}).catch(err => {
+					field === 'mobile' ? row.hideMobileEye = false : row.hideNameEye = false;
+					console.error(err);
+				});
+			}
+			if (type === 'hide') {
+				const name = row[field].substring(0,1) + '*';
+				const mobile = row[field].substring(0,3) + '****' + row[field].substring(7,11);
+				row[field] = field === 'mobile' ? mobile : name;
+			}
 		};
 	}
 }
