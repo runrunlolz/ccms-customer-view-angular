@@ -8,7 +8,19 @@
 					 ng-click="vm.changeCard('left', $index)">
 					<icon-jiantouzuo></icon-jiantouzuo>
 				</div>
-				<div class="card" ng-class="{fromLeft: vm.cardFromLeft, fromRight: !vm.cardFromLeft, vip1: item.grade === '1', vip2: item.grade === '2', vip3: item.grade === '3', vip4: item.grade === '4', vip5: item.grade === '5', vip6: item.grade === '6', vip7: item.grade === '7'}">
+				<!--LP3会员卡等级是1到7-->
+				<!--<div class="card" ng-class="{fromLeft: vm.cardFromLeft, fromRight: !vm.cardFromLeft, vip1: item.grade === '1', vip2: item.grade === '2', vip3: item.grade === '3', vip4: item.grade === '4', vip5: item.grade === '5', vip6: item.grade === '6', vip7: item.grade === '7'}">-->
+					<!--<header>-->
+						<!--<span class="card-name">{{item.cardName}}</span>-->
+					<!--</header>-->
+					<!--<footer>-->
+						<!--<span class="card-number" ng-bind="item.cardNumber"></span>-->
+
+						<!--<span class="card-grade" ng-bind="item.gradeName"></span>-->
+					<!--</footer>-->
+				<!--</div>-->
+				<!--LP2会员卡等级是0到6-->
+				<div class="card" ng-class="{fromLeft: vm.cardFromLeft, fromRight: !vm.cardFromLeft, vip1: item.grade === '0', vip2: item.grade === '1', vip3: item.grade === '2', vip4: item.grade === '3', vip5: item.grade === '4', vip6: item.grade === '5', vip7: item.grade === '6'}">
 					<header>
 						<span class="card-name">{{item.cardName}}</span>
 					</header>

@@ -4,7 +4,7 @@
  * @since 2018/11/11
  */
 import angular from 'angular';
-import template from './areaSelect.tpl.html';
+import template from './areaSelect.str.html';
 import controller from './AreaSelectCtrl';
 import './_areaSelect';
 

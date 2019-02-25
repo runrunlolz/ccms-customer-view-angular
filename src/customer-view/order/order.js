@@ -4,7 +4,7 @@
  */
 
 import angular from 'angular';
-import template from './order.tpl.html';
+import template from './order.str.html';
 import controller from './OrderCtrl';
 import './_order.less';
 

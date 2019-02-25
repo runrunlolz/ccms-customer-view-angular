@@ -4,7 +4,7 @@
  * @since 2018/11/11
  */
 import angular from 'angular';
-import template from './copyable.tpl.html';
+import template from './copyable.str.html';
 import controller from './CopyCtrl';
 
 const copyOption = {

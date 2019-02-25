@@ -38,27 +38,30 @@ module.exports = {
 						}
 					}
 				]
-		}, {
-            test: /\.html$/,
-            use: [{
-                loader: 'html-loader',
-                options: {
-                    minimize: true,
-                    removeComments: true,
-                    collapseWhitespace: true
-                }
-            }],
-            exclude: /(node_modules|bower_components)/
-		}, {
-            test: /\.json$/,
-			use: [{
-				loader: 'json-loader'
+			},
+			{
+				test: /\.str\.html$/,
+				use: [{
+					loader: 'html-loader',
+					options: {
+						minimize: true,
+						removeComments: true,
+						collapseWhitespace: true
+					}
+				}],
+				exclude: /(node_modules|bower_components)/
+			},
+			{
+				test: /\.json$/,
+				use: [{
+					loader: 'json-loader'
+				}]
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				use: [{
+					loader: 'file-loader?name=[path][name]-[hash:5].[ext]'
+				}]
 			}]
-        }, {
-			test: /\.(jpe?g|png|gif|svg)$/i,
-			use: [{
-				loader: 'file-loader?name=[path][name]-[hash:5].[ext]'
-			}]
-		}]
 	}
 };

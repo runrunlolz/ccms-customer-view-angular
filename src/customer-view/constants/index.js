@@ -70,6 +70,11 @@ export const GENDER_LIST = [
 		value: 'w'
 	}
 ];
+// 常量：所有正则表达式集合
+export const REG_EXPRESS = {
+	// 输入限制为最多4位小数
+	labelNumberRegExpress: /^(-?\d+)(\.\d{1,4})?$/i
+};
 
 // tab选项
 export const TAB_LIST = [

@@ -48,11 +48,14 @@ const setComponentResource = api_prefix => {
         // 评价信息
         evaluationInfo: genResource(`${api_prefix}order/rate`),
 
-        // 自定义标签修改
+		// 获取标签类型列表 todo
+		getLabelTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
+
+        // 自定义标签修改保存
         updateTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
 
         // 自定义标签删除
-        deleteTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
+        deleteTag: genResource(`${api_prefix}customerTag/:uniId/defineTag/:tagId`),
 
         // 自定义标签新增
         addTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),

@@ -6,7 +6,7 @@
  */
 
 import angular from 'angular';
-import template from './marketing.tpl.html';
+import template from './marketing.str.html';
 import controller from './MarketingCtrl';
 import './_marketing.less';
 

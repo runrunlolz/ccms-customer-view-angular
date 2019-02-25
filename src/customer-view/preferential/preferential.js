@@ -5,7 +5,7 @@
  * @since 2018/11/13
  */
 import angular from 'angular';
-import template from './preferential.tpl.html';
+import template from './preferential.str.html';
 import controller from './PreferentialCtrl';
 import './_preferential.less';
 

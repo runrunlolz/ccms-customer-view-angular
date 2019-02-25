@@ -40,6 +40,10 @@ function getSoloPlatRfmInfo(uniId, platCode, shopId) {
 	return componentResource.getSoloPlatRfmInfo.get({uniId, platCode, shopId}).$promise;
 }
 
+// 获取标签类型
+function getTagTypeList() {
+	return componentResource.getLabelTypeList.query().$promise;
+}
 // 新增自定义标签
 function addTag(uniId, body) {
 	return componentResource.addTag.save({uniId}, body).$promise;
@@ -104,6 +108,7 @@ const service = {
 	getPlatInfo,
 	getPlatShopsInfo,
 	getAreaInfo,
+	getTagTypeList,
 	getReceiveAddressDecryptMessage,
 	getEvaluationInfo,
 	getLocationAreas,

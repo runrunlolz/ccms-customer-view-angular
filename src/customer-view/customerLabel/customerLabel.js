@@ -6,7 +6,7 @@
  */
 
 import angular from 'angular';
-import template from './customerLabel.tpl.html';
+import template from './customerLabel.str.html';
 import controller from './CustomerLabelCtrl';
 import './_customerLabel.less';
 
