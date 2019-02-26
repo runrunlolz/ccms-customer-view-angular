@@ -38,7 +38,7 @@ export default class customerCardCtrl {
 		service.getTagsInfo(uniId)
 			.then(res => {
 				// 筛选自定义标签和云标签
-				res.tagList.filter(item => {
+				res.tagList.length && res.tagList.filter(item => {
 					item.tagType === 'system' ? this.cloudTag.push(item) : this.defineTag.push(item);
 				});
 				this.showLoading = false;
