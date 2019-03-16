@@ -76,7 +76,8 @@
 
 	<div class="grid-container" ng-show="vm.customerCardInfo.length && !vm.showLoading && vm.isMember">
 		<div class="grid-container-title">
-			<span class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</span><span class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </span>
+			<span class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</span>
+			<span class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </span>
 		</div>
 		<div class="customer-card-grid-wrap">
 			<grid-manager ng-show="vm.selectedGrade" option="vm.customerGradeOptions"></grid-manager>
