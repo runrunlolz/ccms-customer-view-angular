@@ -13,21 +13,24 @@ module.exports = {
 		list: [
 			{
 				marketingTime: '2018-01-30 00:11:11',
-				marketingType: '营销类型',
+				marketingType: 'SY_DATA_MANAGE',
+				marketingTypeName: '营销场景1',
 				communicationMode: '短信',
 				communicationContent: '短信：短信内容特别长，too long too long too long',
 				activityName: '活动名称'
 			},
 			{
 				marketingTime: '2018-01-30 00:11:11',
-				marketingType: '营销类型',
+				marketingType: 'SY_DATA_MANAGE',
+				marketingTypeName: '营销场景2',
 				communicationMode: '短信',
 				communicationContent: '短信：短信内容',
 				activityName: '活动名称'
 			},
 			{
 				marketingTime: '2018-01-30 00:11:11',
-				marketingType: '营销类型',
+				marketingType: 'SY_DATA_MANAGE',
+				marketingTypeName: '营销场景3',
 				communicationMode: '短信',
 				communicationContent: '短信：短信内容',
 				activityName: '活动名称'
