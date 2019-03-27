@@ -15,7 +15,7 @@ module.exports = {
 				marketingTime: '2018-01-30 00:11:11',
 				marketingType: '营销类型',
 				communicationMode: '短信',
-				communicationContent: '短信：短信内容',
+				communicationContent: '短信：短信内容特别长，too long too long too long',
 				activityName: '活动名称'
 			},
 			{
