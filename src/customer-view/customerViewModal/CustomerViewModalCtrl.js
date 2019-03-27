@@ -168,12 +168,12 @@ export default class customerViewCtrl {
 	    CUSTOMER_PLAT_ID_LIST.forEach(item => {
 		    // 全渠道
 		    if (item.field === 'OMNI') {
-			    customerIdsList.push(item);
+			    customerIdsList.push({...item});
 		    }
 
 		    // 普通平台
 		    if (jeasy.find(platformList, 'platCode', item.field).length > 0) {
-			    customerIdsList.push(item);
+			    customerIdsList.push({...item});
 		    }
 	    });
 
@@ -311,7 +311,7 @@ export default class customerViewCtrl {
 	 */
 	reformBirthday(birthday) {
 		if (!birthday) return '--';
-		return jeasy.moment(birthday).format('YYYY/mm/DD');
+		return jeasy.moment(birthday).format('YYYY/MM/DD');
 	}
 	/**
 	 * 格式化年龄
@@ -569,8 +569,7 @@ export default class customerViewCtrl {
 	 */
 	editBirthday() {
 		this.resetEditState();
-
-		this.birthday = new Date(this.customerBasicInfo.birthday);
+		this.birthday = this.customerBasicInfo.birthday === '--' ? undefined : new Date(this.customerBasicInfo.birthday);
 		this.onBirthdayEdit = true;
 	}
 	handleBirthdaySave() {

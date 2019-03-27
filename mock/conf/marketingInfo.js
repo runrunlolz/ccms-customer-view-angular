@@ -16,7 +16,7 @@ module.exports = {
 				marketingType: 'SY_DATA_MANAGE',
 				marketingTypeName: '营销场景1',
 				communicationMode: '短信',
-				communicationContent: '短信：短信内容',
+				communicationContent: '短信：短信内容特别长，too long too long too long',
 				activityName: '活动名称'
 			},
 			{

@@ -12,6 +12,11 @@
 	min-height: 500px;
 	flex-direction: column;
 	color: #3d3d3d;
+	/*用于处理tooltip行内元素，由于宽度问题定位错误*/
+	table[grid-manager] tbody span[cc-tooltip]{
+		display: inline-block;
+		max-width: 100%;
+	}
 	.date-picker .date-picker-clear{
 		display: none;
 	}

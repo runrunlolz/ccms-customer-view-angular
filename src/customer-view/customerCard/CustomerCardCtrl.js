@@ -150,8 +150,6 @@ export default class customerCardCtrl {
 	 * 切换会员卡信息
 	 */
 	changeCard(type, index) {
-
-
 		if (type === 'left') {
 			this.cardFromLeft = true;
 			this.isShowIndex = index - 1;
@@ -187,6 +185,6 @@ export default class customerCardCtrl {
 			} else {
 				this._$gridManager.setQuery('customerPointInfo', params);
 			}
-		}, 100);
+		}, 500);
 	}
 }
