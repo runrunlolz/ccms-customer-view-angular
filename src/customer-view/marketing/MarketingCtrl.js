@@ -28,7 +28,7 @@ export default class MarketingCtrl {
 			{
 				text: '营销场景',
 				align: 'left',
-				key: 'marketingType'
+				key: 'marketingTypeName'
 			},
 			{
 				text: '活动名称',
