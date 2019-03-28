@@ -243,7 +243,7 @@
 			<li class="tab" ng-class='{active:vm.nowLabel === tab.key}' ng-click="vm.changeTab(tab.key)" ng-repeat="tab in vm.tabList">{{tab.name}}</li>
 		</ul>
 	</div>
-	<div>
+	<div class="table-area">
 		<!--客户标签-->
 		<customer-label uni-id="vm._uniId" ng-if="vm.nowLabel === 'customerLabel'"></customer-label>
 

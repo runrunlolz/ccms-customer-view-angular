@@ -1,31 +1,5 @@
-.order-section-style{
-	margin-bottom: 20px;
-	.order-grid-style{
-		.table-wrap{
-			background-color: #F8F8F8;
-		}
-		.table-wrap .table-div table[grid-manager] thead tr {
-			border: 1px solid #EEEEEE;
-		}
-		.table-wrap .table-div {
-			height: calc(100% - 50px) !important;
-			overflow-x: hidden !important;
-		}
-		.table-wrap .table-div table[grid-manager] tbody tr td {
-			padding: 0 !important;
-			border: 0 !important;
-			height: 0 !important;
-			background-color: #F8F8F8 !important;
-		}
-		.table-wrap.ccms-skin .footer-toolbar{
-			margin-top: 5px;
-			border-color: #EEEEEE;
-		}
-	}
-}
-
 .order-container-style {
-	max-height: 700px;
+	height: 100%;
 	.dropdown-list {
 		// 修改组件库中的下拉列表z-index，否则会被表格组件表头遮住
 		z-index: 9999 !important;
@@ -113,5 +87,31 @@
 		justify-content: center;
 		align-items: flex-start;
 		padding-left: 30%;
+	}
+	.order-section-style{
+		margin-bottom: 20px;
+		height: calc(100% - 42px);
+		.order-grid-style{
+			.table-wrap{
+				background-color: #F8F8F8;
+			}
+			.table-wrap .table-div table[grid-manager] thead tr {
+				border: 1px solid #EEEEEE;
+			}
+			.table-wrap .table-div {
+				height: calc(100% - 50px) !important;
+				overflow-x: hidden !important;
+			}
+			.table-wrap .table-div table[grid-manager] tbody tr td {
+				padding: 0 !important;
+				border: 0 !important;
+				height: 0 !important;
+				background-color: #F8F8F8 !important;
+			}
+			.table-wrap.ccms-skin .footer-toolbar{
+				margin-top: 5px;
+				border-color: #EEEEEE;
+			}
+		}
 	}
 }
