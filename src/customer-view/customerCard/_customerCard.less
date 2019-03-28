@@ -6,6 +6,7 @@
 
 .customer-card-container {
 	width: 1070px;
+	margin-top: 8px;
 	.loading-area {
 		margin-left: 45%;
 	}
@@ -15,12 +16,12 @@
 		> li {
 			> div {
 				display: inline-block;
-				vertical-align: middle;
+				vertical-align: top;
 			}
 		}
 		.card-area {
-			width: 360px;
-			margin-right: 100px;
+			width: 474px;
+			padding: 38px 100px 34px 0;
 			display: inline-block;
 			> div {
 				display: inline-block;
@@ -71,26 +72,30 @@
 			}
 			.card {
 				width: 270px;
-				height: 154px;
-				background-position: center;
+				height: 150px;
 				position: relative;
 				vertical-align: middle;
-				margin: 0 14px;
+				margin: 0 28px;
+				border-radius: 4px;
+				background-position: center;
 				header {
 					position: absolute;
 					left: 20px;
 					top: 20px;
+					height: 22px;
+					line-height:22px;
 					.card-name {
 						font-size: 18px;
 						color: #ffffff;
 						color:rgba(255,255,255,1);
-						line-height:22px;
 					}
 				}
 				footer {
+					height: 28px;
 					position: absolute;
-					bottom: 4px;
+					bottom: 2px;
 					width: 100%;
+					line-height: 28px;
 					.card-number {
 						color: #FFFFFF;
 						position: absolute;
@@ -98,7 +103,7 @@
 					}
 					.card-grade {
 						color: #320005;
-						padding: 7px;
+						padding: 0 12px;
 						border-radius:4px 0 4px 0;
 						opacity:0.95;
 						float: right;
@@ -107,9 +112,18 @@
 					}
 				}
 			}
-			.chang-card {
+			.change-card {
 				color: #CCCCCC;
 				cursor: pointer;
+				icon-jiantouyou, icon-jiantouzuo {
+					height: 24px;
+					display: block;
+					fill: #CCCCCC;
+					.cc-icon {
+						height: 24px;
+						font-size: 20px;
+					}
+				}
 			}
 			.card-page {
 				cursor: default;
@@ -118,31 +132,30 @@
 				margin-top: 30px;
 			}
 		}
-		.info {
-			display: inline-block;
-			.info-area {
-				margin: 0;
-				color: #3D3D3D;
-				dt,
-				dd {
-					display: inline-block;
-					vertical-align: top;
-					height: 28px;
-					line-height: 28px;
-					font-size: 12px;
-					color: #4c4c4c;
-				}
-				dt {
-					text-align: right;
-					width: 90px;
-				}
-				dd {
-					text-align: left;
-					margin-left: 0;
-					width: 120px;
-				}
+
+		.info-area {
+			margin: 0;
+			color: #3D3D3D;
+			dt,
+			dd {
+				display: inline-block;
+				vertical-align: top;
+				height: 28px;
+				line-height: 28px;
+				font-size: 12px;
+				color: #4c4c4c;
+			}
+			dt {
+				text-align: right;
+				width: 90px;
+			}
+			dd {
+				text-align: left;
+				margin-left: 0;
+				width: 120px;
 			}
 		}
+
 		.empty-area {
 			position: relative;
 			top: 6em;
@@ -163,17 +176,16 @@
 	}
 	.grid-container {
 		.grid-container-title {
-			margin: 10px 0;
 			text-align: center;
-			line-height: 26px;
-			> span {
+			line-height: 32px;
+			> button {
 				width:114px;
 				height:32px;
 				font-size:14px;
 				font-weight:400;
 				color:rgba(255,255,255,1);
-				line-height:22px;
-				padding: 5px 15px;
+				line-height:20px;
+				padding: 5px 14px;
 				cursor: pointer;
 			}
 			.grade {
@@ -198,8 +210,8 @@
 		}
 		.customer-card-grid-wrap {
 			width: 1070px;
-			height: calc(100vh - 400px);
 			margin-bottom: 20px;
+			margin-top: 16px;
 			.change-value {
 				padding-right: 100px;
 			}

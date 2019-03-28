@@ -3,7 +3,7 @@
 	<ul class="customer-card-info" ng-show="vm.customerCardInfo.length && !vm.showLoading && vm.isMember">
 		<li ng-repeat="item in vm.customerCardInfo track by $index" ng-show="vm.isShowIndex === $index">
 			<div class="card-area">
-				<div class="chang-card"
+				<div class="change-card"
 					 ng-class="{showChangeBtn: vm.customerCardInfo.length !== 1, hideChangeBtn: vm.customerCardInfo.length === 1}"
 					 ng-click="vm.changeCard('left', $index)">
 					<icon-jiantouzuo></icon-jiantouzuo>
@@ -26,11 +26,10 @@
 					</header>
 					<footer>
 						<span class="card-number" ng-bind="item.cardNumber"></span>
-
 						<span class="card-grade" ng-bind="item.gradeName"></span>
 					</footer>
 				</div>
-				<div class="chang-card"
+				<div class="change-card"
 					 ng-class="{showChangeBtn: vm.customerCardInfo.length !== 1, hideChangeBtn: vm.customerCardInfo.length === 1}"
 					 ng-click="vm.changeCard('right', $index)">
 					<icon-jiantouyou></icon-jiantouyou>
@@ -76,8 +75,7 @@
 
 	<div class="grid-container" ng-show="vm.customerCardInfo.length && !vm.showLoading && vm.isMember">
 		<div class="grid-container-title">
-			<span class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</span>
-			<span class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </span>
+			<button class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</button><button class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </button>
 		</div>
 		<div class="customer-card-grid-wrap">
 			<grid-manager ng-show="vm.selectedGrade" option="vm.customerGradeOptions"></grid-manager>
