@@ -39,7 +39,7 @@ module.exports = function (configurations) {
 								'platNick': '数云掌门'
 							}
 						],
-						'fullName': '测*',
+						'fullName': '测*长度很长很长很长很长很长',
 						'fullNameSource': 'commonleUsed',
 						'gender': '',
 						'genderSource': 'register',
@@ -49,7 +49,7 @@ module.exports = function (configurations) {
 						'mobileSource': 'defined',
 						'mobileEffectiveness': 1,
 						'mobileMarkting': 1,
-						'email': 'g**m',
+						'email': 'g********************m',
 						'emailSource': 'defined',
 						'emailEffectiveness': 1,
 						'emailMarkting': 1,
@@ -65,7 +65,7 @@ module.exports = function (configurations) {
 						'cityName': '晋中市',
 						'districtName': '寿阳县',
 						'townName': '温家庄乡',
-						'address': '人保大厦18层',
+						'address': '人保大厦18层这个地址必须很长，才能看出来tooltip生效了没，我觉得还是不够长，这样应该就差不多了吧',
 						'addressSource': 'defined',
 						'totalPurchaseAmount': '1111128.12',
 						'boughtPlatform': 'TAOBAO,JOS,SUNING,TAOBAO,JOS,SUNING,TAOBAO,JOS,SUNING,TAOBAO,JOS,SUNING,TAOBAO,JOS,SUNING,TAOBAO,JOS,SUNING',
