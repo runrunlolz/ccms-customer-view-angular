@@ -28,10 +28,10 @@
 			<li ng-repeat="item in vm.rfmList">
 				<div class="shop-area">
 					<span class="shop-icon">
-						<svg style="fill: currentColor;width: 14px;height: 14px"
-							 aria-hidden="true">
-                      		<use xlink:href="{{vm.getPlat(item.platCode).icon}}"></use>
-                		</svg>
+						<!--<svg style="fill: currentColor;width: 14px;height: 14px"-->
+							 <!--aria-hidden="true">-->
+                      		<!--<use xlink:href="{{vm.getPlat(item.platCode).icon}}"></use>-->
+                		<!--</svg>-->
 						<icon-cl-tb ng-if="vm.getPlat(item.platCode).value === 'TAOBAO'"></icon-cl-tb>
 						<icon-cl-jd ng-if="vm.getPlat(item.platCode).value === 'JOS'"></icon-cl-jd>
 						<icon-cl-yhd ng-if="vm.getPlat(item.platCode).value === 'YHD'"></icon-cl-yhd>

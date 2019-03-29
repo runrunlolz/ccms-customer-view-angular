@@ -9,13 +9,15 @@
 .customer-view-modal-style {
 	display: flex;
 	height: 500px;
-	min-height: 500px;
 	flex-direction: column;
 	color: #3d3d3d;
 	/*用于处理tooltip行内元素，由于宽度问题定位错误*/
 	table[grid-manager] tbody span[cc-tooltip]{
 		display: inline-block;
 		max-width: 100%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	.date-picker .date-picker-clear{
 		display: none;
@@ -126,6 +128,12 @@
 			}
 			.normal-attr-info-style{
 				display: flex;
+				.label-info {
+					max-width: 110px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
 			}
 		}
 		.address-style {
@@ -227,5 +235,8 @@
 				cursor: default;
 			}
 		}
+	}
+	.table-area {
+		height: calc(100% - 250px);
 	}
 }
