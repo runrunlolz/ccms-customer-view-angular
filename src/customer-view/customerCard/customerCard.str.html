@@ -1,6 +1,6 @@
 <div class="customer-card-container">
 	<cc-loading class="loading-area" ng-if="vm.showLoading"></cc-loading>
-	<ul class="customer-card-info" ng-show="vm.customerCardInfo.length && !vm.showLoading && vm.isMember">
+	<ul class="customer-card-info" ng-show="vm.customerCardInfo.length && !vm.showLoading">
 		<li ng-repeat="item in vm.customerCardInfo track by $index" ng-show="vm.isShowIndex === $index">
 			<div class="card-area">
 				<div class="change-card"
@@ -75,7 +75,9 @@
 
 	<div class="grid-container" ng-show="vm.customerCardInfo.length && !vm.showLoading && vm.isMember">
 		<div class="grid-container-title">
-			<button class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</button><button class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </button>
+			<!-- button之间的注释符号为了解决换行有空格问题 -->
+			<button class="select-grade" ng-class="{grade: !vm.selectedGrade, integral: vm.selectedGrade}" ng-click="vm.viewChangeRecord('point')">积分变更记录</button><!--
+			--><button class="select-point" ng-class="{grade: vm.selectedGrade, integral: !vm.selectedGrade}" ng-click="vm.viewChangeRecord('grade')">等级变更记录 </button>
 		</div>
 		<div class="customer-card-grid-wrap">
 			<grid-manager ng-show="vm.selectedGrade" option="vm.customerGradeOptions"></grid-manager>
@@ -83,7 +85,7 @@
 		</div>
 	</div>
 
-	<div class="customer-card-info" ng-show="!vm.customerCardInfo.length && !vm.showLoading && !vm.isMember">
+	<div class="customer-card-info" ng-show="!vm.customerCardInfo.length && !vm.showLoading">
 		<div class="empty-area">
 			<icon-caution class="warning"></icon-caution>
 			<span class="warning-label">当前客户未领取任何会员卡</span>
