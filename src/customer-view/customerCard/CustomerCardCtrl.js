@@ -119,17 +119,18 @@ export default class customerCardCtrl {
 	getCustomerCardInfo() {
 		this.showLoading = true;
 		customerCardService.getCustomerCardInfo(this.uniId).then(res => {
-			if (!res.length) {
+			this.customerCardInfo = res;
+
+			if (!this.customerCardInfo.length) {
 				this.showLoading = false;
 				return;
 			}
 			// 只有一张会员卡且等级为0则不是会员
-			if (res.length === 1 && res[0].grade === '0') {
+			if (this.customerCardInfo.length === 1 && this.customerCardInfo[0].grade === '0') {
 				this.showLoading = false;
 				this.isMember = false;
 				return;
 			}
-			this.customerCardInfo = res;
 			this.cardPlanId = this.customerCardInfo[0].cardPlanId;
 			this.viewChangeRecord('point');
 			this.showLoading = false;
