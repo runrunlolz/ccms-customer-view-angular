@@ -1,6 +1,6 @@
 {
     "name": "ccms-customer-view",
-    "version": "0.1.17",
+    "version": "0.1.18",
     "description": "ccms-customer-view",
     "main": "index.js",
     "scripts": {
