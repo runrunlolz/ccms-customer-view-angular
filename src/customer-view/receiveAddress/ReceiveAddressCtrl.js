@@ -27,6 +27,7 @@ export default class ReceiveAddressCtrl {
 				text: '收货人姓名',
 				key: 'fullName',
 				align: 'left',
+				width: '100px',
 				template: '<span ng-mouseover="vm.showNameEye = true" ng-mouseleave="vm.showNameEye = false">{{row.fullName}} <icon-eye ng-if="index === vm.selectedIndex && vm.showNameEye && !row.hideNameEye" ng-click="vm.getDecrypt(\'fullName\', row, \'show\')"></icon-eye>' +
 					'<icon-miwen ng-if="index === vm.selectedIndex && vm.showNameEye && row.hideNameEye" ng-click="vm.getDecrypt(\'fullName\', row, \'hide\')"></icon-miwen></span>'
 			},
@@ -34,29 +35,33 @@ export default class ReceiveAddressCtrl {
 				text: '收货人手机',
 				align: 'left',
 				key: 'mobile',
+				width: '100px',
 				template: '<span ng-mouseover="vm.showMobileEye = true" ng-mouseleave="vm.showMobileEye = false">{{row.mobile}} <icon-eye ng-show="index === vm.selectedIndex && vm.showMobileEye && !row.hideMobileEye" ng-click="vm.getDecrypt(\'mobile\', row, \'show\')"></icon-eye>' +
 					'<icon-miwen ng-if="index === vm.selectedIndex && vm.showMobileEye && row.hideMobileEye" ng-click="vm.getDecrypt(\'mobile\', row, \'hide\')"></icon-miwen></span>'
 			},
 			{
 				text: '省份',
 				key: 'stateName',
-				align: 'left'
-
+				align: 'left',
+				width: '100px',
 			},
 			{
 				text: '城市',
 				align: 'left',
-				key: 'cityName'
+				key: 'cityName',
+				width: '100px',
 			},
 			{
 				text: '区县',
 				align: 'left',
-				key: 'districtName'
+				key: 'districtName',
+				width: '100px',
 			},
 			{
 				text: '街道',
 				align: 'left',
 				key: 'townName',
+				width: '100px',
 				template: '<span cc-tooltip="row.townName">{{row.townName}}</span>'
 			},
 			{
@@ -69,6 +74,7 @@ export default class ReceiveAddressCtrl {
 				text: '<span class="trade-count">收货订单数</span>',
 				key: 'tradeCount',
 				align: 'right',
+				width: '100px',
 				template: '<span class="trade-count">{{row.tradeCount}}</span>'
 			}
 		];
