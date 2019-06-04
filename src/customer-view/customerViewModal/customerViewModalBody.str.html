@@ -31,7 +31,7 @@
 						<div
 						ng-if="!vm.customerName.loading"
 						class="normal-attr-info-style">
-							<div ng-if="!vm.customerName.isEditing && !vm.customerName.loading" cc-tooltip="vm.customerBasicInfo.fullName">
+							<div ng-if="!vm.customerName.isEditing && !vm.customerName.loading" cc-tooltip="vm.customerBasicInfo.fullName" class="label-info">
 								{{vm.customerBasicInfo.fullName ? vm.customerBasicInfo.fullName : "--"}}
 							</div>
 							<input
@@ -151,7 +151,7 @@
 						邮箱：
 							<cc-loading ng-if="vm.emailLoading"></cc-loading>
 							<div ng-if="!vm.emailLoading" class="normal-attr-info-style">
-								<div ng-if="!vm.onEmailEdit" cc-tooltip="vm.customerBasicInfo.email">{{vm.customerBasicInfo.email ? vm.customerBasicInfo.email : "--"}}</div>
+								<div ng-if="!vm.onEmailEdit" class="label-info" cc-tooltip="vm.customerBasicInfo.email">{{vm.customerBasicInfo.email ? vm.customerBasicInfo.email : "--"}}</div>
 								<input
 								class="customer-attr-info-block-input-style"
 								ng-if="vm.onEmailEdit"
