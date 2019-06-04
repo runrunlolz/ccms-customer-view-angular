@@ -70,7 +70,7 @@
 					</dl>
 					<dl>
 						<dt>首次购买日期：</dt>
-						<dd>{{item.firstCreated ? item.firstCreated : '--'}}</dd>
+						<dd>{{item.firstCreated ? item.firstCreated.slice(0,10) : '--'}}</dd>
 					</dl>
 					<dl>
 						<dt>总购买次数：</dt>
@@ -82,7 +82,7 @@
 					</dl>
 					<dl>
 						<dt>最近一次购买日期：</dt>
-						<dd>{{item.lastCreated ? item.lastCreated : '--'}}</dd>
+						<dd>{{item.lastCreated ? item.lastCreated.slice(0,10) : '--'}}</dd>
 					</dl>
 					<dl>
 						<dt>平均客单价：</dt>
