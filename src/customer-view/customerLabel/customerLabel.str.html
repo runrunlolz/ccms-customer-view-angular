@@ -23,15 +23,15 @@
 			</ul>
 		</div>
 	</div>
-	<div class="customer-label-main">
+	<div class="customer-label-main" ng-if="!vm.showLoading">
 		<ul>
 			<li ng-repeat="item in vm.rfmList">
 				<div class="shop-area">
 					<span class="shop-icon">
-						<!--<svg style="fill: currentColor;width: 14px;height: 14px"-->
-							 <!--aria-hidden="true">-->
-                      		<!--<use xlink:href="{{vm.getPlat(item.platCode).icon}}"></use>-->
-                		<!--</svg>-->
+						<svg style="fill: currentColor;width: 14px;height: 14px"
+							 aria-hidden="true">
+                      		<use xlink:href="{{vm.getPlat(item.platCode).icon}}"></use>
+                		</svg>
 						<icon-cl-tb ng-if="vm.getPlat(item.platCode).value === 'TAOBAO'"></icon-cl-tb>
 						<icon-cl-jd ng-if="vm.getPlat(item.platCode).value === 'JOS'"></icon-cl-jd>
 						<icon-cl-yhd ng-if="vm.getPlat(item.platCode).value === 'YHD'"></icon-cl-yhd>
@@ -69,8 +69,8 @@
 						<dd>{{item.yearPayment ? '￥' + item.yearPayment : '--'}}</dd>
 					</dl>
 					<dl>
-						<dt>首次购买时间：</dt>
-						<dd>{{item.firstCreated ? item.firstCreated : '--'}}</dd>
+						<dt>首次购买日期：</dt>
+						<dd>{{item.firstCreated ? item.firstCreated.slice(0,10) : '--'}}</dd>
 					</dl>
 					<dl>
 						<dt>总购买次数：</dt>
@@ -81,8 +81,8 @@
 						<dd>{{item.yearCountBuy ? item.yearCountBuy + '次' : '--'}}</dd>
 					</dl>
 					<dl>
-						<dt>最近一次购买时间：</dt>
-						<dd>{{item.lastCreated ? item.lastCreated : '--'}}</dd>
+						<dt>最近一次购买日期：</dt>
+						<dd>{{item.lastCreated ? item.lastCreated.slice(0,10) : '--'}}</dd>
 					</dl>
 					<dl>
 						<dt>平均客单价：</dt>
@@ -111,7 +111,7 @@
 						<dd>--</dd>
 					</dl>
 					<dl>
-						<dt>首次购买时间：</dt>
+						<dt>首次购买日期：</dt>
 						<dd>--</dd>
 					</dl>
 					<dl>
@@ -123,7 +123,7 @@
 						<dd>--</dd>
 					</dl>
 					<dl>
-						<dt>最近一次购买时间：</dt>
+						<dt>最近一次购买日期：</dt>
 						<dd>--</dd>
 					</dl>
 					<dl>

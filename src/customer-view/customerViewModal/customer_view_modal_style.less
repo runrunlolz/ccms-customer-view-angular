@@ -1,22 +1,28 @@
-.customer-view-modal-loading-style{
-	height: 230px;
+.customer-view-modal-loading-style {
+	height: 218px;
 	position: relative;
 	left: 45%;
+	top: 35%;
 }
-.ccms-modal .container.modal{
+
+.ccms-modal .container.modal {
 	/* 自定义滚动条样式 */
+
 	::-webkit-scrollbar-track {
 		border-radius: 5px;
 		background-color: #f3f3f3;
 	}
+
 	::-webkit-scrollbar-track-piece {
 		display: none;
 	}
+
 	::-webkit-scrollbar {
 		background: transparent;
 		width: 10px;
 		height: 10px;
 	}
+
 	::-webkit-scrollbar-thumb {
 		border-radius: 5px;
 		background-color: #e1e1e1;
@@ -26,7 +32,8 @@
 		background-clip: content-box;
 	}
 }
-.ccms-modal .container.modal .modal-body{
+
+.ccms-modal .container.modal .modal-body {
 	padding-top: 10px;
 	overflow-x: hidden;
 }
@@ -37,22 +44,26 @@
 	color: #3d3d3d;
 
 	/*用于处理tooltip行内元素，由于宽度问题定位错误*/
-	table[grid-manager] tbody span[cc-tooltip]{
+
+	table[grid-manager] tbody span[cc-tooltip] {
 		display: inline-block;
 		max-width: 100%;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		overflow: hidden;
 	}
+
 	.normal-tooltip {
 		max-width: 200px;
 		white-space: pre-wrap;
 		-ms-word-wrap: break-word;
 		word-wrap: break-word;
 	}
-	.date-picker .date-picker-clear{
+
+	.date-picker .date-picker-clear {
 		display: none;
 	}
+
 	.customer-info-title-style {
 		div {
 			max-width: 100px;
@@ -61,10 +72,12 @@
 			text-overflow: ellipsis;
 		}
 	}
+
 	.customer-view-basic-info-style {
 		display: flex;
 		align-items: center;
 	}
+
 	.customer-avatar-style {
 		flex-basis: 80px;
 		height: 80px;
@@ -75,40 +88,49 @@
 		justify-content: center;
 		align-items: center;
 		border-radius: 4px;
-		.customer-avatar-default-image-style{
+
+		.customer-avatar-default-image-style {
 			display: block;
 			width: 100%;
 			height: 100%;
-			&.maleAvatar{
+
+			&.maleAvatar {
 				background-image: url("../assets/img/male.png");
 			}
-			&.femaleAvatar{
+
+			&.femaleAvatar {
 				background-image: url("../assets/img/female.png");
 			}
-			&.unknownAvatar{
+
+			&.unknownAvatar {
 				background-image: url("../assets/img/unknown.png");
 			}
 		}
 	}
+
 	.customer-info-block-style {
 		flex-basis: calc(100% - 100px);
+
 		ul {
 			display: flex;
 			width: 100%;
 			justify-content: flex-start;
 			align-items: flex-start;
 			flex-wrap: wrap;
+
 			li {
 				display: flex;
 				width: 20%;
-				line-height: 18px;
-				margin-bottom: 10px;
+				line-height: 16px;
+				margin-bottom: 12px;
 			}
+
 			.customer-info-copyable-style {
 				cursor: pointer;
 			}
 		}
 	}
+
 	.customer-attr-info-block-style {
 		width: 970px;
 		height: 68px;
@@ -117,48 +139,59 @@
 		align-items: center;
 		flex-wrap: wrap;
 		border-top: 1px dashed #DADADA;
-		cc-loading section .loader .circular{
+
+		cc-loading section .loader .circular {
 			height: 40%;
 		}
+
 		.prepare-edit {
 			display: flex;
 			align-items: center;
 			line-height: 26px;
-			>* {
+
+			> * {
 				display: flex;
 				align-items: center;
 				margin-left: 10px;
 				cursor: pointer;
-				fill: rgba(0,0,0,.45);
+				fill: rgba(0, 0, 0, .45);
+
 				&:hover {
 					fill: #0083BA;
 				}
+
 				&icon-finish {
 					fill: #52C41A;
 				}
+
 				&icon-close {
 					fill: fade(#000, 45%);
 				}
 			}
 		}
+
 		.customer-attr-info-block-detail-style {
 			display: flex;
 			width: 20%;
-			height: 34px;
-			line-height: 26px;
-			padding: 4px 0;
+			height: 16px;
+			line-height: 16px;
+			margin: 11px 0 12px 0;
 			align-items: center;
+
 			.customer-attr-info-block-input-style {
 				width: 100px;
 				height: 26px;
+
 				.date-picker {
 					line-height: 26px;
 				}
-				.date-picker .date-picker-input{
+
+				.date-picker .date-picker-input {
 					height: 26px;
 				}
 			}
-			.normal-attr-info-style{
+
+			.normal-attr-info-style {
 				display: flex;
 				.label-info {
 					max-width: 110px;
@@ -168,26 +201,35 @@
 				}
 			}
 		}
+
+		.email-label {
+			margin-top: 0 !important;
+		}
+
 		.address-style {
 			display: flex;
 			width: 80%;
-			align-items: center;
-			height: 26px;
-			line-height: 26px;
-			.customer-attr-area-style{
+			height: 16px;
+			line-height: 16px;
+			margin-bottom: 12px;
+
+			.customer-attr-area-style {
 				width: 650px;
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
-			.normal-attr-info-style{
+
+			.normal-attr-info-style {
 				display: flex;
 			}
 		}
 	}
+
 	.customer-attr-info-block-style:hover {
 		background: rgba(238, 248, 252, 1);
 	}
+
 	.consumption-info-block-style {
 		display: flex;
 		flex-direction: row;
@@ -195,40 +237,28 @@
 		align-items: center;
 		flex-wrap: wrap;
 		border-top: 1px dashed #DADADA;
-		padding: 6px 0 12px 0;
-		.consumption-info-first-col-style {
+		padding: 11px 0 9px 0;
+
+		.consumption-info-first-col-style, .consumption-info-second-col-style, .consumption-info-third-col-style {
 			height: 100%;
 			width: 33.3%;
+
 			li {
-				display: flex;
 				overflow: hidden;
 				text-overflow: ellipsis;
-				padding: 6px 20px 6px 0;
+				padding: 0 20px 12px 0;
 			}
-			.customer-purchers-list-style{
+		}
+		.consumption-info-first-col-style {
+			li {
+				display: flex;
+			}
+			.customer-purchers-list-style {
 				max-width: 240px;
 				word-wrap: break-word;
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow: ellipsis;
-			}
-		}
-		.consumption-info-second-col-style {
-			height: 100%;
-			width: 33.3%;
-			li {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				padding: 6px 0;
-			}
-		}
-		.consumption-info-third-col-style {
-			height: 100%;
-			width: 33.3%;
-			li {
-				overflow: hidden;
-				text-overflow: ellipsis;
-				padding: 6px 0;
 			}
 		}
 	}
@@ -237,6 +267,7 @@
 		ul {
 			border-bottom: 1px solid #32B5E5;
 		}
+
 		.tab {
 			display: inline-block;
 			text-align: center;
@@ -251,6 +282,7 @@
 			color: #0083ba;
 			font-size: 12px;
 		}
+
 		.active {
 			border-color: #33b5e5;
 			border-bottom-color: #fcfcfc;
@@ -260,26 +292,31 @@
 			cursor: default;
 			margin-bottom: -1px;
 			z-index: 6;
+
 			label {
 				cursor: default;
 			}
 		}
 	}
+
 	.table-area {
 		height: 400px;
 		padding-top: 12px;
 		padding-bottom: 20px;
+
 		&.table-label-area {
 			height: auto;
 		}
+
 		&.table-card-area {
 			height: 660px;
 		}
+
 		.tips-label {
 			height: 32px;
 			text-align: right;
 			color: #999;
-			line-height:20px;
+			line-height: 20px;
 			padding: 12px 23px 0 0;
 		}
 	}
