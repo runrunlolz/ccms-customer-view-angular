@@ -50,7 +50,8 @@ export default class OrderCtrl {
         this.shopList = [{shopId: '', shopName: '不限'}];
         this.currentShop = '';
         this.initQuery = {uniId: this.uniId, oneYearLater: false};
-        // 表格初始化
+
+		// 表格初始化
         this.gmOptions = {
             gridManagerName: 'orderInfo',
             width: '1070px',
@@ -99,8 +100,10 @@ export default class OrderCtrl {
 									class="product-detail-info-style" 
 									ng-repeat="item in row.orderList track by $index">
 										<a ng-href="{{item.detailUrl}}" target="_blank">
-											<img ng-src="{{item.picUrl}}" width="56px" height="56px">
+											<img ng-if="item.picUrl" ng-src="{{item.picUrl}}" width="69" height="68">
+											<div ng-if="!item.picUrl" class="default-img"></div>
 										</a>
+
 										<div class="product-name-sku-refund-style">
 											<div
 											class="product-name-style"

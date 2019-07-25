@@ -10,10 +10,10 @@ module.exports = {
 			"created": "2018-12-14 12:14:35",
 			"orderId": "61010410002000",
 			"orderList": [{
-				"detailUrl": "http://www.baidu.com",
+				"detailUrl": "",
 				"isRefund": "1",
 				"orderItemId": "61010410002001",
-				"picUrl": "https://img.alicdn.com/imgextra/i1/3892117632/O1CN01To7kWB26FVG7FhulI_!!0-item_pic.jpg_430x430q90.jpg",
+				"picUrl": "",
 				"price": "50.00",
 				"productId": "10001",
 				"productName": "我本将心向明月，奈何明月照沟渠",
