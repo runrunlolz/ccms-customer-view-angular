@@ -11,7 +11,7 @@ import customerCardService from '../common/service';
 import { componentResource } from '../common/resource';
 import jeasy from 'jeasy';
 
-@Inject('$timeout', '$gridManager')
+@Inject('$timeout', '$interval', '$gridManager')
 export default class customerCardCtrl {
 	constructor() {
 		this.init();
@@ -24,14 +24,17 @@ export default class customerCardCtrl {
 		// 等级记录和积分选中，默认选中等级变更记录
 		this.selectedGrade = true;
 
-		// 默认会员配置（普通用户不显示会员卡以及变更列表）
-		this.isMember = true;
-		// 获取会员卡信息
-		this.getCustomerCardInfo();
-		// 默认显示第一张卡片
-		this.isShowIndex = 0;
 		// 获取表格数据
 		this.getGridData();
+
+		// 默认会员配置（普通用户不显示会员卡以及变更列表）
+		this.isMember = true;
+
+		// 获取会员卡信息
+		this.getCustomerCardInfo();
+
+		// 默认显示第一张卡片
+		this.isShowIndex = 0;
 	}
 
 	/**
@@ -95,15 +98,6 @@ export default class customerCardCtrl {
 			}
 		];
 
-		this.customerGradeOptions = {
-			gridManagerName: 'customerGradeInfo',
-			firstLoading: false,
-			ajax_data: (setting, params) => {
-				return componentResource.gradeChangeRecord.get(params).$promise;
-			},
-			columnData: gradeColumnsData
-		};
-
 		this.customerPointOptions = {
 			gridManagerName: 'customerPointInfo',
 			firstLoading: false,
@@ -112,6 +106,27 @@ export default class customerCardCtrl {
 			},
 			columnData: pointColumnsData
 		};
+
+		// 会员积分表格是否渲染完成
+		this.customerPointRender = false;
+		this.customerPointCallback = () => {
+			this.customerPointRender = true;
+		};
+
+		this.customerGradeOptions = {
+			gridManagerName: 'customerGradeInfo',
+			firstLoading: false,
+			ajax_data: (setting, params) => {
+				return componentResource.gradeChangeRecord.get(params).$promise;
+			},
+			columnData: gradeColumnsData,
+		};
+
+		// 会员等级表格是否渲染完成
+		this.customerGradeRender = false;
+		this.customerGradeCallback = () => {
+			this.customerGradeRender = true;
+		};
 	}
 	/**
 	 * 获取会员卡信息
@@ -119,19 +134,20 @@ export default class customerCardCtrl {
 	getCustomerCardInfo() {
 		this.showLoading = true;
 		customerCardService.getCustomerCardInfo(this.uniId).then(res => {
-			if (!res.length) {
+			this.customerCardInfo = res;
+
+			if (!this.customerCardInfo.length) {
 				this.showLoading = false;
 				return;
 			}
 			// 只有一张会员卡且等级为0则不是会员
-			if (res.length === 1 && res[0].grade === '0') {
+			if (this.customerCardInfo.length === 1 && this.customerCardInfo[0].grade === '0') {
 				this.showLoading = false;
 				this.isMember = false;
 				return;
 			}
-			this.customerCardInfo = res;
 			this.cardPlanId = this.customerCardInfo[0].cardPlanId;
-			this.viewChangeRecord('point');
+			this.viewChangeRecord(this.customerPointOptions.gridManagerName);
 			this.showLoading = false;
 		}).catch(err => {
 			this.showLoading = false;
@@ -150,8 +166,6 @@ export default class customerCardCtrl {
 	 * 切换会员卡信息
 	 */
 	changeCard(type, index) {
-
-
 		if (type === 'left') {
 			this.cardFromLeft = true;
 			this.isShowIndex = index - 1;
@@ -174,19 +188,34 @@ export default class customerCardCtrl {
 
 	/**
 	 * 事件：变更记录查看
-	 * @param type
-	 * type为grade时表示查看会员等级变更记录
-	 * type为point时表示查看会员积分变更记录
+	 * @param gridManagerName
 	 */
-	viewChangeRecord(type) {
-		this.selectedGrade = type === 'grade';
+	viewChangeRecord(gridManagerName) {
+		this.selectedGrade = gridManagerName === this.customerGradeOptions.gridManagerName;
 		const params = {uniId: this.uniId, cardPlanId: this.cardPlanId};
-		this._$timeout(() => {
-			if (this.selectedGrade) {
-				this._$gridManager.setQuery('customerGradeInfo', params);
-			} else {
-				this._$gridManager.setQuery('customerPointInfo', params);
+
+		this.itv && this._$interval.cancel(this.itv);
+		// 会员积分
+		if (!this.selectedGrade) {
+			this.itv = this._$interval(() => {
+				if (!this.customerPointRender) {
+					return;
+				}
+
+				this._$gridManager.setQuery(gridManagerName, params);
+				this._$interval.cancel(this.itv);
+			}, 100);
+			return;
+		}
+
+		// 会员等级
+		this.itv = this._$interval(() => {
+			if (!this.customerGradeRender) {
+				return;
 			}
+
+			this._$gridManager.setQuery(gridManagerName, params);
+			this._$interval.cancel(this.itv);
 		}, 100);
 	}
 }

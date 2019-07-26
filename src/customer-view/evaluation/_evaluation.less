@@ -3,48 +3,14 @@
  * @author wangbo
  * @since 2018/11/15
  */
-.evaluation-grid-wrap{
-	margin-bottom: 20px;
-	height: calc(100vh - 400px);
-	width: 1070px;
-	.evaluation-grid-style{
-		.table-wrap{
-			background-color: #F8F8F8;
-		}
-		.table-wrap .table-div table[grid-manager] thead tr {
-			border: 1px solid #EEEEEE;
-		}
-		.table-wrap .table-div {
-			margin-bottom: 5px;
-			overflow-x: hidden !important;
-			height: calc(100% - 50px) !important;
-		}
-		.table-wrap .table-div table[grid-manager] tbody tr td {
-			padding: 0 !important;
-			border: 0 !important;
-			height: 0 !important;
-			background-color: #F8F8F8 !important;
-		}
-		.table-wrap.ccms-skin .footer-toolbar{
-			border-color: #EEEEEE;
-		}
-	}
-	icon-good-review svg{
-		fill: #FA534F;
-	}
-	icon-medium-review svg{
-		fill: #FEAD0A;
-	}
-	icon-poor-review svg{
-		fill: #A9A9A9;
-	}
-}
 .evaluation-container {
+	height: 100%;
 	.dropdown-list {
 		// 修改组件库中的下拉列表z-index，否则会被表格组件表头遮住
 		z-index: 9999 !important;
 	}
 	.evaluation-params-style{
+		height: 44px;
 		padding-bottom: 12px;
 		.evaluation-plat-shop-select-style{
 			width: 251px;
@@ -144,5 +110,40 @@
 	}
 	.evaluation-gird-rate-replay-style{
 		color:#E99100;
+	}
+
+	.evaluation-grid-wrap{
+		height: calc(100% - 44px);
+		.evaluation-grid-style{
+			.table-wrap{
+				background-color: #F8F8F8;
+			}
+			.table-wrap .table-div table[grid-manager] thead tr {
+				border: 1px solid #EEEEEE;
+			}
+			.table-wrap .table-div {
+				margin-bottom: 5px;
+				overflow-x: hidden !important;
+				height: calc(100% - 50px) !important;
+			}
+			.table-wrap .table-div table[grid-manager] tbody tr td {
+				padding: 0 !important;
+				border: 0 !important;
+				height: 0 !important;
+				background-color: #F8F8F8 !important;
+			}
+			.table-wrap.ccms-skin .footer-toolbar{
+				border-color: #EEEEEE;
+			}
+		}
+		icon-good-review svg{
+			fill: #FA534F;
+		}
+		icon-medium-review svg{
+			fill: #FEAD0A;
+		}
+		icon-poor-review svg{
+			fill: #A9A9A9;
+		}
 	}
 }

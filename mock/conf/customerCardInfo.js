@@ -122,8 +122,6 @@ module.exports = {
 	],
 
 	'/data-manage-x/1.0/customerCard/pointChangeRecord/:uniId': {
-		pageNum: 1,
-		pageSize: 15,
 		totals: 100,
 		list: [
 			{
@@ -158,8 +156,6 @@ module.exports = {
 	},
 
 	'/data-manage-x/1.0/customerCard/gradeChangeRecord/:uniId': {
-		pageNum: 1,
-		pageSize: 15,
 		totals: 200,
 		list: [
 			{

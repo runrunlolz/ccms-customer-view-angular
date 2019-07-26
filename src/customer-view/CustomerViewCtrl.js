@@ -16,6 +16,7 @@ export default class CustomerView {
 	openCustomerView() {
 		this._$ccModal
 		.modal({
+			style: {width: '1110px', height: '500px'},
 			scope: false,
 			title: '客户视图',
 			fullscreen: false,
