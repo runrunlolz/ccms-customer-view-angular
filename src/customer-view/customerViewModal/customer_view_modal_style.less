@@ -105,13 +105,14 @@
 			&.unknownAvatar {
 				background-image: url("../assets/img/unknown.png");
 			}
+			background-position: center;
 		}
 	}
 
 	.customer-info-block-style {
 		flex-basis: calc(100% - 100px);
 
-		ul {
+		.customer-nick-block-style {
 			display: flex;
 			width: 100%;
 			justify-content: flex-start;
@@ -132,9 +133,10 @@
 	}
 
 	.customer-attr-info-block-style {
+		display: flex;
 		width: 970px;
 		height: 68px;
-		display: flex;
+		padding: 7px 0 9px 0;
 		justify-content: flex-start;
 		align-items: center;
 		flex-wrap: wrap;
@@ -172,21 +174,31 @@
 		.customer-attr-info-block-detail-style {
 			display: flex;
 			width: 20%;
-			height: 16px;
-			line-height: 16px;
-			margin: 11px 0 12px 0;
+			height: 26px;
+			line-height: 26px;
 			align-items: center;
 
 			.customer-attr-info-block-input-style {
 				width: 100px;
 				height: 26px;
-
-				.date-picker {
-					line-height: 26px;
+				.dropdown-select-input-wrap {
+					.dropdown-select-input, .dropdown-select-icons {
+						height: 24px;
+						.dropdown-toggle {
+							height: inherit;
+						}
+					}
 				}
 
-				.date-picker .date-picker-input {
+				> form {
+					line-height: 26px !important;
 					height: 26px;
+					.date-picker-input {
+						height: 24px;
+						line-height: 24px;
+						vertical-align: top;
+					}
+
 				}
 			}
 
@@ -208,9 +220,9 @@
 		.address-style {
 			display: flex;
 			width: 80%;
-			height: 16px;
-			line-height: 16px;
-			margin-bottom: 12px;
+			height: 26px;
+			line-height: 26px;
+			vertical-align: top;
 			ul {
 				width: auto;
 				li {
