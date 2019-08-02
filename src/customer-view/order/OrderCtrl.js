@@ -95,13 +95,13 @@ export default class OrderCtrl {
                     align: 'left',
                     useCompile: true,
                     template: row => {
-                        return `<div class="sub-order-info-stlye">
+                        return `<div class="sub-order-info-style">
 									<div
 									class="product-detail-info-style" 
 									ng-repeat="item in row.orderList track by $index">
 										<a ng-href="{{item.detailUrl}}" target="_blank">
-											<img ng-if="item.picUrl" ng-src="{{item.picUrl}}" width="69" height="68">
-											<div ng-if="!item.picUrl" class="default-img"></div>
+											<img ng-if="item.picUrl" ng-src="{{item.picUrl}}" width="70" height="70">
+											<div ng-if="!item.picUrl" class="default-img">暂无图片</div>
 										</a>
 
 										<div class="product-name-sku-refund-style">
@@ -133,7 +133,7 @@ export default class OrderCtrl {
                     width: '80px',
                     useCompile: true,
                     template: () => {
-                        return `<div class="sub-order-info-stlye">
+                        return `<div class="sub-order-info-style">
 									<div class="product-price-style" ng-repeat="item in row.orderList track by $index">￥{{item.price}}</div>
 								</div>`;
                     }
@@ -145,7 +145,7 @@ export default class OrderCtrl {
                     width: '230px',
                     useCompile: true,
                     template: () => {
-                        return `<div class="sub-order-info-stlye">
+                        return `<div class="sub-order-info-style">
 									<div class="product-num-style" ng-repeat="item in row.orderList track by $index">{{item.productNum}}</div>
 								</div>`;
                     }
@@ -172,7 +172,7 @@ export default class OrderCtrl {
                     useCompile: true,
                     template: () => {
                         return `<div
-								class="sub-order-payment-stlye"
+								class="sub-order-payment-style"
 								style="height: calc({{row.orderList.length}} * 79px)">
 									<div>￥{{row.payment}}</div>
 									<div ng-if="row.postFee">（含运费：￥{{row.postFee}}）</div>
@@ -188,15 +188,15 @@ export default class OrderCtrl {
         };
         if (this.currentPlat !== '') {
             query.platCode = this.currentPlat;
-            this.onShoplistLoading = true;
+            this.onShopListLoading = true;
             service.getPlatShopsInfo(this.currentPlat).then(res => {
                 this.shopList = res;
                 this.shopList.unshift({shopId: '', shopName: '不限'});
                 this.currentShop = '';
-                this.onShoplistLoading = false;
+                this.onShopListLoading = false;
             }).catch(err => {
                 this._$ccTips.error(err, this.TipsModal);
-                this.onShoplistLoading = false;
+                this.onShopListLoading = false;
             });
             this._$gridManager.setQuery('orderInfo', query);
             return;
