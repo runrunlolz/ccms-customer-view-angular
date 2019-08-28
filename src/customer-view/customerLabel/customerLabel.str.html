@@ -1,28 +1,43 @@
 <div class="customer-label-container">
 	<cc-loading class="loading-area" ng-if="vm.showLoading"></cc-loading>
-	<div class="customer-label-title" ng-if="false">
-		<div class="cloud-tag-area">
+	<div class="customer-label-title" ng-if="!vm.showLoading">
+		<!--云标签：未打标、未订阅则不显示-->
+		<div class="cloud-tag-area" ng-if="vm.cloudTag.length">
 			<ul>
 				<span>云标签：</span>
 				<li class="cloud-tag" ng-repeat="tag in vm.cloudTag">{{tag.tagName}}:{{tag.tagValue}}</li>
 			</ul>
 		</div>
+
 		<div class="define-tag-area">
-			<ul>
+			<!--自定义标签：无标签则提示创建标签，未打标则提示打标-->
+			<ul ng-class="{'hide-more-item': vm.tagHeight() > 56 && !vm.showMoreTag}">
 				<span>自定义标签：</span>
-				<a class="no-define-tag" href="" ng-if="!vm.defineTag.length">您还没有创建任何标签，马上创建吧！(链接到客户标签管理-自定义标签页)</a>
-				<li ng-mouseenter="vm.editLabel('show', $index)"
-					ng-mouseleave="vm.editLabel('hide', $index)"
-					class="define-tag" ng-repeat="tag in vm.defineTag">
-					{{tag.tagName}}:{{tag.tagValue}}
-					<icon-edit ng-if="vm.prepareEdit === $index" ng-click="vm.openDefineTagModal('edit', tag)"></icon-edit>
-				</li>
 				<li class="add-tag" ng-click="vm.openDefineTagModal('add', null)">
-					<icon-add></icon-add>新增标签
+					<span><icon-add></icon-add>打标签</span>
+				</li>
+				<li ng-if="vm.defineTag.length"
+					class="define-tag"
+					ng-repeat="tag in vm.defineTag">
+					<span class="define-tag-name" ng-click="vm.openDefineTagModal('edit', tag)">
+						{{tag.tagName}}：{{tag.valueType === 2 || tag.valueType === 4 ? tag.tagValue.join('、') : tag.valueType === 0 ? tag.tagValue[0] : tag.tagValue}}
+					</span>
+					<icon-close ng-click="vm.deleteTag(tag.tagId)"></icon-close>
 				</li>
 			</ul>
+			<a class="toggle-show" ng-if="vm.tagHeight() > 56" ng-click="vm.toggleShowTag()">
+				<span  ng-if="!vm.showMoreTag">
+					展开全部
+					<icon-arrow></icon-arrow>
+				</span>
+				<span ng-if="vm.showMoreTag">
+					关闭全部
+					<icon-arrow class="icon-up"></icon-arrow>
+				</span>
+			</a>
 		</div>
 	</div>
+
 	<div class="customer-label-main" ng-if="!vm.showLoading">
 		<ul>
 			<li ng-repeat="item in vm.rfmList">

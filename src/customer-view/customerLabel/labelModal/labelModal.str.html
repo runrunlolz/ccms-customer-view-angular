@@ -3,85 +3,91 @@
 	<dl class="label-area">
 		<dt>标签：</dt>
 		<dd ng-if="vm.modalType === 'add'">
-			<cc-dropdown-select
-				model="vm.name"
-				datalist="vm.defineTagNameList"
-				placeholder="请选择标签"
-				searchable="true"
-				mapping="{
-					valueField: 'tagValueType',
-					displayField: 'tagName'
-				}"
-				on-select-change="vm.onChangeTagName(model, oldModel, itemIndex, item)"
-				disabled="vm.modalType === 'edit'"
-				class="dropdown">
-			</cc-dropdown-select>
+			<div class="selected-area" ng-click="vm.toggleShowTagList()">
+				<input type="text" placeholder="请选择标签" readonly ng-model="vm.selectedTagName">
+				<icon-jiantouzuo ng-if="vm.showTagList"></icon-jiantouzuo>
+				<icon-jiantouyou ng-if="!vm.showTagList"></icon-jiantouyou>
+			</div>
+
+			<!--标签选择区域-->
+			<wb-tag-select ng-if="vm.showTagList" tag-list="vm.defineTagList" on-selected-tag="vm.selectedTag(tag)"></wb-tag-select>
 		</dd>
 		<dd ng-if="vm.modalType === 'edit'">
-			<span ng-bind="vm.tagName"></span>
+			<span ng-bind="vm.selectedTagName"></span>
 		</dd>
-	</dl>
-	<dl class="label-area">
+
 		<dt>标签类型：</dt>
 		<dd>
-			<span class="label-tips" ng-bind="vm.tagValueTypeName"></span>
+			<span class="label-tips" ng-bind="vm.tagTypeName"></span>
 		</dd>
 	</dl>
+
 	<dl class="label-area">
-		<dt>标签值：</dt>
+		<dt ng-if="vm.tagType === 0">选择日期：</dt>
+		<dt ng-if="vm.tagType === 2 || vm.tagType === 4 || vm.tagType === -1">选择标签值：</dt>
 		<dd>
-			<span class="label-tips" ng-if="vm.tagValueType === -1">请选择标签</span>
-			<!--内容多选型-->
-			<cc-dropdown-multiselect
-				ng-if="vm.tagValueType === 4"
-				placeholder="请选择标签值"
-				model="vm.tagValueList"
-				has-select-all="true"
-				searchable="true"
-				class="dropdown"
-				datalist="vm.defineMultipleTagValueList">
-			</cc-dropdown-multiselect>
+			<span class="label-tips" ng-if="vm.tagType === -1">请选择标签值</span>
 
-			<!--内容单选型-->
-			<cc-dropdown-select
-				ng-if="vm.tagValueType === 3"
-				model="vm.tagValue"
-				searchable="true"
-				datalist="vm.defineSingleTagValueList"
-				placeholder="请选择标签值"
-				class="dropdown">
-			</cc-dropdown-select>
-
-			<!--字符型-->
-			<span ng-if="vm.tagValueType === 1">
-				<input type="text" placeholder="请选择标签值" ng-model="vm.tagValue">
-			</span>
-
-			<!--日期型-->
-			<span ng-if="vm.tagValueType === 0">
+			<!--日期型：年月日、月日、年月类型-->
+			<div ng-if="vm.tagType === 0">
+				<!--年月日类型-->
 				<cc-date-picker
+					ng-if="vm.optionType === 0"
 					ng-model="vm.tagValue"
-					date-only="true">
+					date-only="true" >
 				</cc-date-picker>
-			</span>
+				<!--年月类型-->
+				<wb-date-select
+					ng-if="vm.optionType === 1"
+					date="vm.tagValue">
+				</wb-date-select>
+				<!--todo 月日类型，一期不做-->
+			</div>
 
-			<!--数值型-->
-			<span ng-if="vm.tagValueType === 2">
-				<input type="text"
-					   class="label-value-number"
-					   required
-					   placeholder="请输入标签值"
-					   ng-model="vm.tagValue"
-					   ng-pattern="vm.inputRegExpress"
-					   cc-validator
-					   pattern-msg="只支持数字且最多支持4位小数">
-			</span>
+
+			<!--字符、数值选择型-->
+			<div class="select-item" ng-if="vm.tagType === 2 || vm.tagType === 4">
+				<!--单选类型-->
+				<label class="label-name"
+					   ng-if="vm.valueNumberOption === 0"
+					   ng-repeat="item in vm.defineTagValue track by $index"
+					   ng-click="vm.selectedRadioTagValue(item)">
+					<input type="radio" name="radio" ng-checked="vm.radioValue.itemVal === item.itemVal">
+					<span class="tag-name" cc-tooltip="item.itemVal">{{item.itemVal}}</span>
+				</label>
+				<!--多选类型-->
+				<label class="label-name"
+					   ng-if="vm.valueNumberOption === 1"
+					   ng-repeat="item in vm.defineTagValue track by $index">
+					<input type="checkbox"
+						   ng-checked="vm.isSelected(item.itemVal)"
+						   ng-click="vm.updateSelection($event, item.itemVal)">
+					<span class="tag-name" cc-tooltip="item.itemVal">{{item.itemVal}}</span>
+				</label>
+			</div>
+
+			<!--字符输入型 todo 一期不做-->
+<!--			<span ng-if="vm.valueType === 1">-->
+<!--				<input type="text" placeholder="请选择标签值" ng-model="vm.tagValue">-->
+<!--			</span>-->
+
+			<!--数值输入型 todo 一期不做-->
+<!--			<div ng-if="vm.tagValueType === 3">-->
+<!--				<input type="text"-->
+<!--					   class="label-value-number"-->
+<!--					   required-->
+<!--					   placeholder="请输入标签值"-->
+<!--					   ng-model="vm.tagValue"-->
+<!--					   ng-pattern="vm.inputRegExpress"-->
+<!--					   cc-validator-->
+<!--					   pattern-msg="只支持数字且最多支持4位小数">-->
+<!--			</div>-->
 		</dd>
 	</dl>
 
-	<div class="footer-modal">
-		<a>
-			<span class="delete-tag" ng-if="vm.modalType === 'edit'" ng-click="vm.deleteTag()">删除标签</span>
-		</a>
-	</div>
+<!--	<div class="footer-modal">-->
+<!--		<a>-->
+<!--			<span class="delete-tag" ng-if="vm.modalType === 'edit'" ng-click="vm.deleteTag()">删除标签</span>-->
+<!--		</a>-->
+<!--	</div>-->
 </form>

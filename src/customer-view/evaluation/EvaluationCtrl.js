@@ -36,7 +36,7 @@ export default class EvaluationCtrl {
                 this.allPlat.push({platCode, platName});
             });
         } else {
-            customerService.getPlatInfo().then(res => {
+            customerService.getPlatformList().then(res => {
                 res.forEach(plat => {
                     this.allPlat.push(plat);
                 });

@@ -1,0 +1,16 @@
+[
+	{
+		"number": "v0.0.1",
+		"date": "2019-09-11",
+		"list": [
+			{
+				"type": "1",
+				"value": "generate-version-webpack-plugin版本信息插件"
+			},
+			{
+				"type": "1",
+				"value": "客户标签模块自定义标签与云标签"
+			}
+		]
+	}
+]

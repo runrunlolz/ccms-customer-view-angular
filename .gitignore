@@ -4,5 +4,5 @@ npm-debug.log
 dist
 .DS_Store
 */.DS_Store
-
+yarn.lock
 package-lock.json

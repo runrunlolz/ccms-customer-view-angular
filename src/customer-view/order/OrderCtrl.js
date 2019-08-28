@@ -33,7 +33,7 @@ export default class OrderCtrl {
                 this.allPlat.push({platCode, platName});
             });
         } else {
-            service.getPlatInfo().then(res => {
+            service.getPlatformList().then(res => {
                 res.forEach(plat => {
                     this.allPlat.push(plat);
                 });

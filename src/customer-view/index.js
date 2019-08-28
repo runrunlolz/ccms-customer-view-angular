@@ -19,7 +19,8 @@ import interaction from './interactive/interactive';
 import customerLabel from './customerLabel/customerLabel';
 import evaluation from './evaluation/evaluation';
 import cvAreaSelect from './component/areaSelect/areaSelect';
-
+import dateSelect from "./component/date-select/dateSelect";
+import tagSelect from "./component/tag-select/tagSelect";
 const customerViewOption = {
 	template: template,
 	controller,
@@ -40,6 +41,8 @@ export default angular.module('components.customerView', [
 	evaluation,
 	cvCopyable,
 	cvAreaSelect,
+	dateSelect,
+	tagSelect,
 	...iconList
 ]).component('customerView', customerViewOption)
 	.name;

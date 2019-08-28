@@ -30,9 +30,19 @@ function getOrderInfo(body) {
 	return componentResource.orderInfo.get(body).$promise;
 }
 
-// 获取标签信息
-function getTagsInfo(uniId, platCode, shopId) {
-	return componentResource.getTagsInfo.get({uniId, platCode, shopId}).$promise;
+// 获取RFM标签列表信息
+function getRFMTagsInfo(uniId, platCode, shopId) {
+	return componentResource.getRFMTagsInfo.get({uniId, platCode, shopId}).$promise;
+}
+
+// 获取自定义标签列表信息
+function getDefineTagsInfo(uniId, tagType) {
+	return componentResource.getTagsInfo.get({uniId, tagType}).$promise;
+}
+
+// 获取云标签列表信息
+function getCloudTagsInfo(uniId, tagType = 0) {
+	return componentResource.getTagsInfo.get({uniId, tagType}).$promise;
 }
 
 // 获取指定店铺RFM信息
@@ -40,28 +50,34 @@ function getSoloPlatRfmInfo(uniId, platCode, shopId) {
 	return componentResource.getSoloPlatRfmInfo.get({uniId, platCode, shopId}).$promise;
 }
 
-// 获取标签类型
-function getTagTypeList() {
-	return componentResource.getLabelTypeList.query().$promise;
-}
-// 新增自定义标签
-function addTag(uniId, body) {
-	return componentResource.addTag.save({uniId}, body).$promise;
+// 获取可选标签列表
+function getTagList() {
+	return componentResource.TagInfoList.get().$promise;
 }
 
-// 修改自定义标签
+// 获取标签类型
+function getTagTypeList() {
+	return componentResource.getTagTypeList.query().$promise;
+}
+
+// 获取标签值详细信息
+function getTagValueInfo(tagId) {
+	return componentResource.getTagValueInfo.get({tagId}).$promise;
+}
+
+// 新增自定义标签
+function addTag(uniId, body) {
+	return componentResource.TagInfo.save({uniId}, body).$promise;
+}
+
+// 修改保存自定义标签
 function updateTag(uniId, body) {
-	return componentResource.updateTag.update({uniId}, body).$promise;
+	return componentResource.TagInfo.update({uniId}, body).$promise;
 }
 
 // 删除自定义标签
 function deleteTag(uniId, tagId) {
 	return componentResource.deleteTag.delete({uniId, tagId}).$promise;
-}
-
-// 获取租户平台
-function getPlatInfo() {
-	return componentResource.platInfo.query().$promise;
 }
 
 // 获取指定平台的所有店铺
@@ -100,15 +116,17 @@ const service = {
 	setCustomerInfo,
 	getDecryptCustomerInfo,
 	getOrderInfo,
-	getTagsInfo,
+	getTagList,
+	getTagTypeList,
+	getTagValueInfo,
+	getRFMTagsInfo,
+	getDefineTagsInfo,
+	getCloudTagsInfo,
 	addTag,
 	getSoloPlatRfmInfo,
 	updateTag,
 	deleteTag,
-	getPlatInfo,
 	getPlatShopsInfo,
-	getAreaInfo,
-	getTagTypeList,
 	getReceiveAddressDecryptMessage,
 	getEvaluationInfo,
 	getLocationAreas,

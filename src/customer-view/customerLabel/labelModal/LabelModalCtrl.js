@@ -7,7 +7,7 @@
 import {Inject} from 'angular-es-utils';
 import './_labelModal.less';
 import service from '../../common/service';
-import { REG_EXPRESS } from '../../constants/index';
+// import { REG_EXPRESS } from '../../constants/index';
 import jEasy from 'jeasy';
 
 @Inject('$scope', '$ccTips', '$ccValidator', '$ccModal', 'modalInstance', 'data')
@@ -22,98 +22,181 @@ export default class labelModalCtrl {
 	init() {
 		// 默认loading
 		this.showLoading = false;
+
+		// 默认不显示可选标签列表
+		this.showTagList = false;
+
 		// modal类型：编辑or新建
 		this.modalType = this._data.openType;
 
-		// 数值型只支持数字型且最多4位小数
-		this.inputRegExpress = REG_EXPRESS.labelNumberRegExpress;
+		// todo一期不做 数值型只支持数字型且最多4位小数
+		// this.inputRegExpress = REG_EXPRESS.labelNumberRegExpress;
 
 		// 默认标签类型名称
-		this.tagValueTypeName = "请选择标签";
-		// 默认标签值
-		this.tagValueType = -1;
+		this.tagTypeName = "请选择标签";
 
-		// 多选型标签值存储器
-		this.tagValueList = [];
+		// 选择标签时的搜索值
+		this.searchValue = '';
 
+		// 默认标签值类型
+		this.tagType = -1;
+
+		// 可选标签列表存储器
+		this.defineTagList = [];
+
+		// 标签值存储器（供多选类型使用）
+		this.selectedTagValuesList = [];
+
+		// 编辑时只能改变标签值所以不需要获取该列表
+		this.modalType === 'add' && this.getTagList();
+
+		// 回显标签信息
 		if (this.modalType === 'edit') {
-			// 编辑时标签
-			this.tagName = this._data.tagInfo && this._data.tagInfo.tagName || '';
-			// 编辑时标签类型
-			this.tagValueType = this._data.tagInfo && this._data.tagInfo.tagValueType || 0;
+			const data = this._data.tagInfo;
+			// 标签ID
+			this.tagId = data.tagId;
+			// 编辑时标签名称
+			this.selectedTagName = data.tagName;
+			// 编辑时标签值类型
+			this.tagType = data.valueType;
+			// 标签值类型(单选、多选)
+			this.valueNumberOption = data.valueNumberOption;
+			// 标签值类型（整数、小数；年月日、年月）
+			this.optionType = data.optionType;
 			// 转换标签类型名称
-			this.changeTagTypeToName(this.tagValueType);
-			// 编辑时标签值
-			this.tagValue = this.formatData(this._data.tagInfo.tagValue, 'edit');
-
-		}
-		// todo 这块是调试用的
-		// 标签列表
-		this.defineTagNameList = [{
-			tagName: '自定义数值型标签1',
-			tagValueType: 2
-		}, {
-			tagName: '自定义日期型标签',
-			tagValueType: 0
-		}, {
-			tagName: '自定义数值型标签',
-			tagValueType: 2
-		}, {
-			tagName: '自定义字符型标签',
-			tagValueType: 1
-		}, {
-			tagName: '自定义单选型标签',
-			tagValueType: 3
-		}, {
-			tagName: '自定义多选型标签',
-			tagValueType: 4
-		}, {
-			tagName: '自定义单选型标签1',
-			tagValueType: 3
-		}];
-
-		// 标签值列表（单选类型）
-		this.defineSingleTagValueList = [
-			'标签值1',
-			'标签值2',
-			'标签值3',
-			'标签值4',
-			'标签值5',
-			'标签值6'
-		];
-		// 标签值列表（多选类型）
-		this.defineMultipleTagValueList = [
-			{
-				title: '标签值1',
-				value: '1'
-			},
-			{
-				title: '标签值2',
-				value: '2'
-			},
-			{
-				title: '标签值3',
-				value: '3'
+			this.changeTagTypeToName(data.valueType);
+			// 编辑时标签值(针对日期型、输入型)
+			this.tagValue = this.formatData(data.tagValue, 'edit');
+			// 字符选择与数值选择类型标签值编辑时处理
+			if (data.valueType === 2 || data.valueType === 4) {
+				this.getTagValueInfo(data.tagId, data.valueType, data.tagValue);
 			}
-		];
+		}
 	}
 
 	/**
-	 * 切换标签
-	 * @param model
-	 * @param oldModel
-	 * @param itemIndex
+	 * 获取可选标签列表
+	 */
+	getTagList() {
+		this.showLoading = true;
+		service.getTagList().then(res => {
+			this.defineTagList = res.data;
+			this.showLoading = false;
+		}).catch(err => {
+			this.showLoading = false;
+			this._$ccTips.error(err.data.msg || '标签列表获取失败');
+			console.error(err);
+		})
+	}
+
+	/**
+	 * 获取指定标签详细信息
+	 * 多选或单选类型回显时需要标签值列表
+	 * @param tagId 标签ID
+	 * @param tagType 标签值类型
+	 * @param tagValue 标签值
+	 */
+	getTagValueInfo(tagId, tagType, tagValue) {
+		this.showLoading = true;
+		this.defineTagValue = [];
+
+		service.getTagValueInfo(tagId).then(res => {
+			this.showLoading = false;
+			const data = res.data;
+			// 可选标签列表中标签值是{itemId: '', itemVal: ''}数据格式，为了配合html模版中的使用此处也使用该数据格式
+			data.optionalValues.forEach(item => {
+				this.defineTagValue.push({itemId: '', itemVal: item});
+			});
+			// 单选类型
+			if (this.valueNumberOption === 0) {
+				// tagValue是一个只有一个标签值元素的数组
+				data.optionalValues.forEach(i => {
+					if (i === tagValue[0]) {
+						this.radioValue = {itemId: '', itemVal: i};
+					}
+				})
+			}
+			// 多选类型
+			if (this.valueNumberOption === 1) {
+				this.selectedTagValuesList = [...tagValue];
+			}
+		}).catch(err => {
+			this.showLoading = false;
+			this._$ccTips.error(err.data.msg || '标签信息获取失败');
+			console.error(err);
+		})
+	}
+
+	/**
+	 * 显示/隐藏可选标签列表
+	 */
+	toggleShowTagList() {
+		this.showTagList = !this.showTagList;
+	}
+
+	/**
+	 * 选择标签
 	 * @param item
 	 */
-	onChangeTagName(model, oldModel, itemIndex, item) {
-		// 获取标签名称
-		this.tagName = item && item.tagName;
-		// 获取标签类型
-		this.tagValueType = model === null ? -1 : model;
-		// 获取标签值
-		this.tagValue = item && item.tagValue;
-		this.changeTagTypeToName(model);
+	selectedTag(item) {
+		// 标签ID
+		this.tagId = item.tagId;
+		// 选择后关闭标签列表
+		this.showTagList = false;
+		// 标签值存储器（供多选类型使用）每次选择时都清空
+		this.selectedTagValuesList = [];
+		// 日期标签值存储
+		this.tagValue = '';
+		// 单选标签值存储
+		this.radioValue = '';
+		// 多选标签值列表存储器
+		this.defineTagValue = [];
+		// 标签名称
+		this.selectedTagName = item.tagName;
+		// 标签类型（日期0、字符输入1、字符选择2、数值输入3、数值选择4、生日5）
+		this.tagType = item.tagType;
+		// 标签子类型(单选0、多选1)
+		this.valueNumberOption = item.valueNumberOption;
+		// 标签子类型(数值：整数0、小数1；日期：年月日0、年月1)
+		this.optionType = item.optionType;
+		// 转换标签类型显示为标签类型名称
+		this.changeTagTypeToName(item.tagType);
+		// 标签值列表存储
+		this.defineTagValue = item.tagValue;
 	}
+
+	/**
+	 * 单选选中标签值
+	 * @param item
+	 */
+	selectedRadioTagValue(item) {
+		this.radioValue = item;
+	}
+
+	/**
+	 * 多选选中标签值
+	 * @param $event
+	 * @param item
+	 */
+	updateSelection($event, item) {
+		const action = $event.target.checked ? 'add' : 'remove';
+		// 选中则添加
+		if (action === 'add' && this.selectedTagValuesList.indexOf(item) === -1) {
+			return this.selectedTagValuesList.push(item);
+		}
+		// 取消则删除
+		if (action === 'remove' && this.selectedTagValuesList.indexOf(item) !== -1) {
+			this.selectedTagValuesList.forEach((tagItem, index) => {
+				if (tagItem === item) {
+					this.selectedTagValuesList.splice(index, 1);
+				}
+			});
+		}
+	}
+	// 判断是否选中
+	isSelected(value){
+		return this.selectedTagValuesList.indexOf(value) >= 0;
+	};
 
 	/**
 	 * 转换标签类型值为名称
@@ -122,44 +205,27 @@ export default class labelModalCtrl {
 	changeTagTypeToName(type) {
 		switch (type) {
 			case 0:
-				this.tagValueTypeName = '日期型';
+				this.tagTypeName = '日期型';
 				break;
 			case 1:
-				this.tagValueTypeName = '字符输入型';
+				this.tagTypeName = '字符输入型';
 				break;
 			case 2:
-				this.tagValueTypeName = '数值型';
+				this.tagTypeName = '字符选择型';
 				break;
 			case 3:
-				this.tagValueTypeName = '内容选择单选型';
+				this.tagTypeName = '数值输入型';
 				break;
 			case 4:
-				this.tagValueTypeName = '内容选择多选型';
+				this.tagTypeName = '数值选择型';
+				break;
+			case 5:
+				this.tagTypeName = '生日类型';
 				break;
 			default:
-				this.tagValueTypeName = '请选择标签';
+				this.tagTypeName = '请选择标签';
 				break;
 		}
-	}
-
-	/**
-	 * 删除标签
-	 */
-	deleteTag() {
-		this.showLoading = true;
-		this._$ccModal.confirm('确定删除标签？').open().result
-			.then(() => {
-				service.deleteTag(this._data.uniId, this._data.tagInfo.tagId).then(() => {
-					this._$ccTips.success('删除成功');
-					this.showLoading = false;
-					this._modalInstance.ok();
-				}).catch(err => {
-					this.showLoading = false;
-					console.error(err);
-				});
-			}).catch(() => {
-				this.showLoading = false;
-		});
 	}
 
 	/**
@@ -167,40 +233,48 @@ export default class labelModalCtrl {
 	 */
 	validator() {
 		// 标签名称不能为空
-		if (!this.tagName) {
+		if (!this.selectedTagName) {
 			this._$ccTips.error('请选择标签');
 			return false;
 		}
 
-		// 日期型不能为空
-		if (this.tagValueType === 0 && !this.tagValue) {
+		// 日期型中年月日类型：标签值不能为空，年月类型默认必填不用校验
+		if (this.tagType === 0 && this.optionType === 0 && !this.tagValue) {
 			this._$ccTips.error('请选择时间');
 			return false;
 		}
 
-		// 数值型不能为空且格式只支持4位小数
-		if (this.tagValueType === 2 && !this.tagValue) {
+		// todo 一期不做 数值输入型不能为空且格式只支持4位小数
+		if (this.tagType === 3 && !this.radioValue) {
 			// 数值型进行小数点位数校验
 			this._$ccValidator.validate(this.form).then(() => {}).catch(() => {});
 			return false;
 		}
 
-		// 内容多选型不能为空
-		if (this.tagValueType === 4 && !this.tagValueList.length) {
-			this._$ccTips.error('请至少选择一个标签值');
-			return false;
+		// 数值与字符选择型不能为空
+		if (this.tagType === 2 || this.tagType === 4) {
+			// 单选型
+			if (this.valueNumberOption === 0 && !this.radioValue) {
+				this._$ccTips.error('请选择一个标签值');
+				return false;
+			}
+			// 多选型
+			if (this.valueNumberOption === 1 && !this.selectedTagValuesList.length) {
+				this._$ccTips.error('请至少选择一个标签值');
+				return false;
+			}
 		}
 
-		// 字符输入型或单选型不能为空
-		if ((this.tagValueType === 1 || this.tagValueType === 3) && !this.tagValue) {
-			this._$ccTips.error('请输入标签值');
-			return false;
-		}
+		// todo 一期先不做字符输入型:this.tagType === 1
+		// if (this.tagType === 1 && !this.tagValue) {
+		// 	this._$ccTips.error('请选择标签值');
+		// 	return false;
+		// }
 		return true;
 	}
 
 	/**
-	 * 日期型与内容多选型数据格式处理
+	 * 日期型与多选型数据格式处理
 	 * @param tagValue 标签值
 	 * @param model 模式：save保存，edit编辑
 	 * @returns {*}
@@ -208,30 +282,30 @@ export default class labelModalCtrl {
 	formatData(tagValue, model) {
 		// 新增与保存时格式转换
 		if (this.modalType === 'add' || model === 'save') {
-			// 日期型
-			if (this.tagValueType === 0) {
-				return tagValue && jEasy.moment(tagValue).format('yyyy-MM-dd');
+			// 日期型: 限制日期类型
+			if (this.tagType === 0) {
+				// 年月日类型需要转换，年月类型无需转换
+				return  this.optionType === 0 ? [jEasy.moment(tagValue).format('yyyy-MM-dd')] : [tagValue];
 			}
 
-			// 内容多选型
-			if (this.tagValueType === 4) {
-				return this.tagValueList.length && this.tagValueList.join(',');
+			// 单选类型
+			if ((this.tagType === 2 || this.tagType === 4) && this.valueNumberOption === 0) {
+				// 一个值也使用数组形式传递给后端
+				return [this.radioValue.itemVal];
 			}
+
+			// 多选类型
+			if ((this.tagType === 2 || this.tagType === 4) && this.valueNumberOption === 1) {
+				return this.selectedTagValuesList;
+			}
+
 			return tagValue;
 		}
 
 		// 编辑时格式转换
 		if (this.modalType === 'edit' && model === 'edit') {
-			// 日期类型处理
-			if (this.tagValueType === 0) {
-				return new Date(tagValue);
-			}
-			// 内容多选型处理
-			if (this.tagValueType === 4) {
-				this.tagValueList = tagValue.split(',');
-				return this.tagValueList;
-			}
-			return tagValue;
+			// 日期类型处理，年月日需要转换为date类型
+			return this.tagType === 0 && this.optionType === 0 ? new Date(tagValue[0]) : tagValue[0];
 		}
 	}
 
@@ -242,12 +316,25 @@ export default class labelModalCtrl {
 		const saveType = this.modalType === 'add';
 		// 新建保存参数
 		const addParams = {
-			tagName: this.tagName,
-			tagType: this.tagValueType,
+			tagId: this.tagId,
+			tagName: this.selectedTagName,
+			// tagType: this.tagType,
 			tagValue: this.formatData(this.tagValue, 'save')
+			// todo 暂时不需要传递给后端
+			// 0整数、1小数；0年月日、1年月
+			// optionType: this.optionType,
+			// 0单选、1多选
+			// valueNumberOption: this.valueNumberOption,
 		};
 
+		// 日期型不需要valueNumberOption字段
+		// addParams.tagType === 0 ? delete addParams.valueNumberOption : '';
+		// 字符选择型不需要optionType字段
+		// addParams.tagType === 2 ? delete addParams.optionType : '';
+
+		// 保存参数
 		const saveParams = saveType ? addParams : {tagId: this._data.tagInfo.tagId, ...addParams};
+		// 保存方法
 		const saveMethod = saveType ? 'addTag' : 'updateTag';
 
 		if (this.validator()) {
@@ -257,7 +344,7 @@ export default class labelModalCtrl {
 				this.showLoading = false;
 				this._modalInstance.ok();
 			}).catch(err => {
-				this._$ccTips.error('保存失败');
+				this._$ccTips.error(err.data.msg || '保存失败');
 				this.showLoading = false;
 				console.error(err);
 			});

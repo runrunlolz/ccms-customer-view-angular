@@ -48,23 +48,26 @@ const setComponentResource = api_prefix => {
         // 评价信息
         evaluationInfo: genResource(`${api_prefix}order/rate`),
 
-		// 获取标签类型列表 todo
-		getLabelTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
+		// 获取标签类型列表
+		getTagTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
 
-        // 自定义标签修改保存
-        updateTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
+		// 获取标签详细信息
+		getTagValueInfo: genResource(`${api_prefix}tagManage/tagInfo/:tagId`),
+
+		// 自定义标签列表
+		TagInfoList: genResource(`${api_prefix}tagManage/1/groupInfo`),
+
+        // 自定义标签修改、保存
+        TagInfo: genResource(`${api_prefix}customerTag/:uniId/tag`),
 
         // 自定义标签删除
-        deleteTag: genResource(`${api_prefix}customerTag/:uniId/defineTag/:tagId`),
+        deleteTag: genResource(`${api_prefix}customerTag/:uniId/tag/:tagId`),
 
-        // 自定义标签新增
-        addTag: genResource(`${api_prefix}customerTag/:uniId/defineTag`),
+        // 获取打标标签信息
+        getTagsInfo: genResource(`${api_prefix}customerTag/:uniId/tag/:tagType`),
 
-        // 标签信息
-        getTagsInfo: genResource(`${api_prefix}customerTag/:uniId`),
-
-        // 标签信息
-        platInfo: genResource(`${api_prefix}customer/platform`),
+        // 获取RFM标签列表信息
+        getRFMTagsInfo: genResource(`${api_prefix}customerTag/:uniId`),
 
         // 单个RMF消费信息
         getSoloPlatRfmInfo: genResource(`${api_prefix}customerTag/:uniId/soloPlatRfm`),

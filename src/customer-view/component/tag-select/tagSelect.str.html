@@ -1,0 +1,11 @@
+<ul class="tag-area">
+	<li class="search-area">
+		<input class="search-input" type="text" autofocus placeholder="请输入搜索值" ng-model="vm.searchValue" ng-change="vm.searchInput(vm.searchValue)">
+		<icon-close ng-click="vm.searchValue = ''"></icon-close>
+	</li>
+	<li ng-repeat="item in vm.tagListResult track by $index">
+		<p ng-repeat="son in item.tagList" ng-click="vm.selectedTag(son)">
+			<span ng-bind-html="vm.getSearchTagName(item.groupName)"></span> > <span ng-bind-html="vm.getSearchTagName(son.tagName)"></span>
+		</p>
+	</li>
+</ul>

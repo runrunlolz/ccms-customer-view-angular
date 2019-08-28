@@ -10,31 +10,74 @@
 }
 .label-modal-container {
 	height: 100%;
-	text-align: center;
+	padding-left: 20px;
 	.label-area {
 		dt,
 		dd {
 			display: inline-block;
-			vertical-align: top;
 			height: 30px;
-			line-height: 26px;
+			vertical-align: top;
+			line-height: 30px;
 			font-size: 12px;
 			color: #4c4c4c;
 		}
 		dt {
 			line-height: 30px;
 			text-align: right;
-			width: 60px;
+			width: 72px;
 		}
 		dd {
 			margin-left: 0;
-			width: 250px;
 			text-align: left;
-			cc-dropdown-select, cc-dropdown-multiselect, .date-picker-holder, .label-value-number {
-				width: 250px;
+			> div {
+				height: 30px;
+			}
+			.date-picker-holder, .label-value-number {
+				width: 220px;
+				button {
+					line-height: 24px;
+				}
 			}
 			.label-tips {
 				line-height: 30px;
+			}
+			.select-item {
+				.label-name {
+					display: inline-block;
+					cursor: pointer;
+					margin-right: 20px;
+					> input {
+						height: 32px;
+						line-height: 30px;
+						margin-right: 5px;
+					}
+					.tag-name {
+						display: inline-block;
+						width: 50px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						vertical-align: top;
+					}
+				}
+			}
+			.selected-area {
+				position: relative;
+				cursor: pointer;
+				width: 220px;
+				> input {
+					width: inherit;
+				}
+				icon-jiantouzuo, icon-jiantouyou {
+					display: block;
+					transform: rotate(90deg);
+					position: absolute;
+					top: 0;
+					right: 10px;
+					.cc-icon {
+						fill: #C2C2C2;
+					}
+				}
 			}
 		}
 		.disableEdit {

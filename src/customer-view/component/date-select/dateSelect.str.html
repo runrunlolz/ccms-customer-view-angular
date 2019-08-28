@@ -1,0 +1,46 @@
+<!--<div class="date-selector-area">-->
+<!--	<div class="date-selector-input-area" tabindex="1" ng-click="vm.toggleSelectedDateArea()">-->
+<!--		<input type="text"-->
+<!--			   readonly-->
+<!--			   ng-class="{disableSelected: vm.disable}"-->
+<!--			   ng-model="vm.time"-->
+<!--			   ng-disabled="vm.disable"-->
+<!--			   placeholder="请选择日期">-->
+<!--	</div>-->
+
+<!--	<div class="date-selector-select-area" ng-if="vm.showSelectedDateArea">-->
+<!--		<icon-jiantouzuo ng-click="vm.changeMonth('previous')"></icon-jiantouzuo>-->
+<!--		<cc-dropdown-select-->
+<!--			model="vm.nowMonth"-->
+<!--			datalist="vm.months"-->
+<!--			on-select-change="vm.changeMonth()">-->
+<!--		</cc-dropdown-select>-->
+<!--		<cc-dropdown-select-->
+<!--			ng-disable="false"-->
+<!--			model="vm.nowYear"-->
+<!--			datalist="vm.years"-->
+<!--			on-select-change="vm.changeYear()">-->
+<!--		</cc-dropdown-select>-->
+<!--		<icon-jiantouyou ng-click="vm.changeMonth('next')"></icon-jiantouyou>-->
+<!--		<div class="btn">-->
+<!--			<button class="btn-cancel" ng-click="vm.getNowTime()">当月</button>-->
+<!--			<button class="btn-ok" ng-click="vm.selectedTime()">确认</button>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
+
+<div class="date-selector-select-area">
+	<cc-dropdown-select
+		ng-disable="false"
+		model="vm.nowYear"
+		disabled="vm.disable"
+		datalist="vm.years"
+		on-select-change="vm.changeYear(model, oldModel)">
+	</cc-dropdown-select>
+	<cc-dropdown-select
+		model="vm.nowMonth"
+		datalist="vm.months"
+		disabled="vm.disable"
+		on-select-change="vm.changeMonth(model, oldModel)">
+	</cc-dropdown-select>
+</div>

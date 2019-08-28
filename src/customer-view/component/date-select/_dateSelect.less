@@ -1,0 +1,56 @@
+/**
+ * _dateSelect.less
+ * wangbo
+ * 2019/8/28
+ */
+
+@area-background: #F4F4F4;
+@area-border: #D9D9D9;
+.date-selector-area {
+	width: 220px;
+	.date-selector-input-area {
+		outline: none;
+		> input {
+			cursor: default;
+		}
+		.disableSelected {
+			cursor: not-allowed;
+		}
+	}
+	.date-selector-select-area {
+		width: inherit;
+		background: @area-background;
+		border: 1px solid @area-border;
+		padding: 3px 0;
+		icon-jiantouyou, icon-jiantouzuo {
+			cursor: pointer;
+			vertical-align: sub;
+			.cc-icon {
+				fill: #C2C2C2;
+			}
+		}
+		cc-dropdown-select {
+			width: 90px;
+		}
+		.btn {
+			padding: 4px 16px;
+			> button {
+				font-size: 12px;
+				height: 24px;
+				line-height: 22px;
+				min-width: 64px;
+				padding-left: 0.75em;
+				padding-right: 0.75em;
+				&:first-child{
+					margin-right: 50px;
+				}
+			}
+		}
+	}
+}
+
+.date-selector-select-area {
+	cc-dropdown-select {
+		width: 90px;
+	}
+}

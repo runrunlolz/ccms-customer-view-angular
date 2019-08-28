@@ -14,6 +14,7 @@ import iconEdit from 'ccms-svg-icons/svgs/iconEdit';
 import iconEdit1 from 'ccms-svg-icons/svgs/iconEdit1';
 import iconIconYulan from 'ccms-svg-icons/svgs/iconIconYulan';
 import iconMiwen from 'ccms-svg-icons/svgs/iconMiwen';
+import iconArrow from 'ccms-svg-icons/svgs/iconArrow';
 import iconSuningyigou from 'ccms-svg-icons/svgs/iconSuningyigou';
 import iconJiantouzuo from 'ccms-svg-icons/svgs/iconJiantouzuo';
 import iconJiantouyou from 'ccms-svg-icons/svgs/iconJiantouyou';
@@ -37,6 +38,7 @@ export default [
 	iconEdit1,
 	iconIconYulan,
 	iconMiwen,
+	iconArrow,
 	iconSuningyigou,
 	iconJiantouzuo,
 	iconJiantouyou,
