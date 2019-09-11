@@ -1,7 +1,7 @@
 {
-    "name": "ccms-customer-view",
-    "version": "0.1.19-3",
-    "description": "ccms-customer-view",
+    "name": "ccms-customer-view-angular",
+    "version": "0.1.19",
+    "description": "ccms-customer-view angular版本",
     "main": "index.js",
     "scripts": {
         "start": "npm run mock & node ./server.js",
