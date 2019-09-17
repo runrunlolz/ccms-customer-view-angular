@@ -10,13 +10,16 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ShuyunFF2E/ccms-customer-view.git"
+        "url": "https://github.com/BoWang816/ccms-customer-view-angular.git"
     },
     "author": "baukh",
     "license": "MIT",
-    "homepage": "https://github.com/ShuyunFF2E/ccms-customer-view#readme",
+    "homepage": "https://github.com/BoWang816/ccms-customer-view-angular#readme",
     "bugs": {
-        "url": "https://github.com/ShuyunFF2E/ccms-customer-view/issues"
+        "url": "https://github.com/BoWang816/ccms-customer-view-angular/issues"
+    },
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/@BoWang816"
     },
     "devDependencies": {
         "@babel/cli": "^7.0.0",
