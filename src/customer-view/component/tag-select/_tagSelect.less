@@ -18,7 +18,10 @@
 		height: 30px;
 		line-height: 30px;
 		cursor: pointer;
-		padding-left: 8px;
+		padding: 0 24px 0 8px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 
 		&:hover {
 			background: #F6F6F6;
@@ -26,12 +29,28 @@
 		.search-highlight {
 			color: #ba4a57 !important;
 		}
+		icon-jiantouyou, icon-jiantouzuo {
+			display: inline-block;
+			position: absolute;
+			right: 10px;
+			.cc-icon {
+				fill: #C2C2C2;
+			}
+		}
+		icon-jiantouzuo {
+			transform: rotate(-90deg);
+		}
+
+	}
+	.tag-item {
+		padding-left: 40px;
 	}
 
 	.search-area {
-		padding: 0 5px;
+		padding: 0 5px 4px 5px;
 
 		.search-input {
+			width: 100%;
 			padding-right: 24px;
 		}
 

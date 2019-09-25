@@ -2,21 +2,18 @@
 <form class="label-modal-container" name="vm.form" ng-if="!vm.showLoading">
 	<dl class="label-area">
 		<dt>标签：</dt>
-		<dd ng-if="vm.modalType === 'add'">
-			<div class="selected-area" ng-click="vm.toggleShowTagList()">
-				<input type="text" placeholder="请选择标签" readonly ng-model="vm.selectedTagName">
+		<dd>
+			<div class="selected-area" ng-click="vm.toggleShowTagList()" ng-class="{disableEdit: vm.modalType === 'edit'}">
+				<input type="text" placeholder="请选择标签" readonly ng-model="vm.selectedTagName" ng-class="{disableInput: vm.modalType === 'edit'}">
 				<icon-jiantouzuo ng-if="vm.showTagList"></icon-jiantouzuo>
 				<icon-jiantouyou ng-if="!vm.showTagList"></icon-jiantouyou>
 			</div>
 
 			<!--标签选择区域-->
-			<wb-tag-select ng-if="vm.showTagList" tag-list="vm.defineTagList" on-selected-tag="vm.selectedTag(tag)"></wb-tag-select>
-		</dd>
-		<dd ng-if="vm.modalType === 'edit'">
-			<span ng-bind="vm.selectedTagName"></span>
+			<wb-tag-select ng-if="vm.showTagList" ng-blur="vm.showTagList = false" tabindex="-1" tag-list="vm.defineTagList" on-selected-tag="vm.selectedTag(tag)"></wb-tag-select>
 		</dd>
 
-		<dt>标签类型：</dt>
+		<dt ng-if="vm.selectedTagName">标签类型：</dt>
 		<dd>
 			<span class="label-tips" ng-bind="vm.tagTypeName"></span>
 		</dd>
@@ -24,10 +21,8 @@
 
 	<dl class="label-area">
 		<dt ng-if="vm.tagType === 0">选择日期：</dt>
-		<dt ng-if="vm.tagType === 2 || vm.tagType === 4 || vm.tagType === -1">选择标签值：</dt>
+		<dt class="select-tag-label" ng-if="vm.tagType === 2 || vm.tagType === 4">选择标签值：</dt>
 		<dd>
-			<span class="label-tips" ng-if="vm.tagType === -1">请选择标签值</span>
-
 			<!--日期型：年月日、月日、年月类型-->
 			<div ng-if="vm.tagType === 0">
 				<!--年月日类型-->
@@ -53,7 +48,7 @@
 					   ng-repeat="item in vm.defineTagValue track by $index"
 					   ng-click="vm.selectedRadioTagValue(item)">
 					<input type="radio" name="radio" ng-checked="vm.radioValue.itemVal === item.itemVal">
-					<span class="tag-name" cc-tooltip="item.itemVal">{{item.itemVal}}</span>
+					<span class="tag-name">{{item.itemVal}}</span>
 				</label>
 				<!--多选类型-->
 				<label class="label-name"
@@ -62,7 +57,7 @@
 					<input type="checkbox"
 						   ng-checked="vm.isSelected(item.itemVal)"
 						   ng-click="vm.updateSelection($event, item.itemVal)">
-					<span class="tag-name" cc-tooltip="item.itemVal">{{item.itemVal}}</span>
+					<span class="tag-name">{{item.itemVal}}</span>
 				</label>
 			</div>
 

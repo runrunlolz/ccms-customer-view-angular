@@ -14,7 +14,12 @@ export default class TagSelectCtrl {
 	}
 
 	init() {
+		// 默认不展开
+		this.selectedGroupId = '';
 		this.searchValue = '';
+		this.tagList.forEach(i => {
+			i.showTagItem = false;
+		});
 		this.tagListResult =  jEasy.clone(this.tagList);
 	}
 
@@ -30,17 +35,20 @@ export default class TagSelectCtrl {
 			if (i.groupName.includes(value)) {
 				return this.tagListResult.push(i);
 			}
+			const tmp = [];
 			// 父级中没找到则子集中也寻找
-			if (i.tagList.length) {
-				const tmp = [];
-				i.tagList.forEach(tag => {
-					// 子集中找到
-					if (tag.tagName.includes(value)) {
-						tmp.push(tag);
-					}
-				});
+			i.tagList.length && i.tagList.forEach(tag => {
+				// 子集中找到
+				if (tag.tagName.includes(value)) {
+					i.showTagItem = true;
+					tmp.push(tag);
+				}
+			});
+			// 子集中找到则拼接整体数据
+			if (tmp.length) {
 				this.tagListResult.push(i);
-				this.tagListResult[index].tagList = tmp;
+				this.tagListResult[this.tagListResult.length - 1].tagList = tmp;
+
 			}
 		});
 	}
@@ -64,5 +72,12 @@ export default class TagSelectCtrl {
 	 */
 	selectedTag(tag) {
 		this.onSelectedTag({tag: tag});
+	}
+
+	/**
+	 * 展开/收缩显示组下面的标签
+	 */
+	toggleGroupTag(item) {
+		item.showTagItem = !item.showTagItem;
 	}
 }

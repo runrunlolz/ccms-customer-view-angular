@@ -31,7 +31,7 @@ module.exports = {
     ],
 
     // 指定标签的标签详细信息
-    '/data-manage-x/1.0/tagManage/tagInfo/:tagId': {
+    '/data-manage-x/1.0/tagManage/tagInfo/1/:tagId': {
         "code": 200,
         "msg": null,
         "data": {
@@ -57,7 +57,7 @@ module.exports = {
                 "tagList": [
                     {
                         "tagId": 11,           //标签11id
-                        "tagName": "tag11日期年月日型",     //标签1名称
+                        "tagName": "tag11日期年月日型日期年月日型日期年月日型日期年月日型日期年月日型日期年月日型日期年月日型日期年月日型",     //标签1名称
                         "valueScope": 0,         //标签值作用域(0:租户级, 1:平台级, 2:店铺级)
                         "tagType": 0,           //标签值类型(0：日期型, 1：字符输入型, 2:字符选择型, 3:数值输入型, 4:数值选择型,5:生日类型)
                         "valueNumberOption": 0,  //可打标签值个数(0:单选，1：多选, null:没有单选多)
@@ -92,6 +92,42 @@ module.exports = {
                         ]
                     },
                     {
+                        "tagId": 555,           //标签11id
+                        "tagName": "tag555日期年月型",     //标签1名称
+                        "valueScope": 0,         //标签值作用域(0:租户级, 1:平台级, 2:店铺级)
+                        "tagType": 0,           //标签值类型(0：日期型, 1：字符输入型, 2:字符选择型, 3:数值输入型, 4:数值选择型,5:生日类型)
+                        "valueNumberOption": 0,  //可打标签值个数(0:单选，1：多选, null:没有单选多)
+                        "optionType": 1, // 如果数值型代表（"0":"整数","1":"小数"）, 如果日期型(0:年/月/日, 1:年/月, 2:月/日)
+                        "tagValue": [
+                            {
+                                "itemId": 3,             //标签值id
+                                "itemVal": "2019-11"  //标签值内容
+                            },
+                            {
+                                "itemId": 4,             //标签值id
+                                "itemVal": "2018-12"  //标签值内容
+                            }
+                        ]
+                    },
+                    {
+                        "tagId": 234343,           //标签11id
+                        "tagName": "tag777日期年月型",     //标签1名称
+                        "valueScope": 0,         //标签值作用域(0:租户级, 1:平台级, 2:店铺级)
+                        "tagType": 0,           //标签值类型(0：日期型, 1：字符输入型, 2:字符选择型, 3:数值输入型, 4:数值选择型,5:生日类型)
+                        "valueNumberOption": 0,  //可打标签值个数(0:单选，1：多选, null:没有单选多)
+                        "optionType": 1, // 如果数值型代表（"0":"整数","1":"小数"）, 如果日期型(0:年/月/日, 1:年/月, 2:月/日)
+                        "tagValue": [
+                            {
+                                "itemId": 3,             //标签值id
+                                "itemVal": "2019-11"  //标签值内容
+                            },
+                            {
+                                "itemId": 4,             //标签值id
+                                "itemVal": "2018-12"  //标签值内容
+                            }
+                        ]
+                    },
+                    {
                         "tagId": 33,           //标签11id
                         "tagName": "tag33字符单选型",     //标签1名称
                         "valueScope": 0,         //标签值作用域(0:租户级, 1:平台级, 2:店铺级)
@@ -101,19 +137,19 @@ module.exports = {
                         "tagValue": [
                             {
                                 "itemId": 5,             //标签值id
-                                "itemVal": "hello"  //标签值内容
+                                "itemVal": "23是多少了飞机返回"  //标签值内容
                             },
                             {
                                 "itemId": 6,             //标签值id
-                                "itemVal": "world"  //标签值内容
+                                "itemVal": "大多数的萨是多少的"  //标签值内容
                             },
                             {
                                 "itemId": 7,             //标签值id
-                                "itemVal": "hello1"  //标签值内容
+                                "itemVal": "好烦好烦好烦好烦好烦"  //标签值内容
                             },
                             {
                                 "itemId": 8,             //标签值id
-                                "itemVal": "world1"  //标签值内容
+                                "itemVal": "好烦好烦好烦好烦好烦"  //标签值内容
                             }
                         ]
                     },
@@ -269,48 +305,48 @@ module.exports = {
             "valueType": 0
         }, {
             "optionType": 0,
-            "tagId": 245,
-            "tagName": "wb字符单选",
+            "tagId": 33,
+            "tagName": "tag33字符单选型",
             "tagType": 1,
-            "tagValue": ["方式34"],
+            "tagValue": ["方式34", "world", "434", "45345", "sdfs","345dg", "23sf", "434", "543245454", "432", "23", "苏打粉", "234", "flutter", "dart", "css", "234苏打粉说", "123.2323", "34.34", "6756.345", "1.56", "456.345", "234.345"],
             "valueNumberOption": 0,
             "valueType": 2
         }, {
             "optionType": 0,
-            "tagId": 246,
-            "tagName": "wb字符多选",
+            "tagId": 44,
+            "tagName": "tag44字符多选型",
             "tagType": 1,
-            "tagValue": ["热", "234苏打粉说", "苏打粉", "舒服苏打粉"],
+            "tagValue": ["hello", "hello1"],
             "valueNumberOption": 1,
             "valueType": 2
         }, {
             "optionType": 0,
-            "tagId": 248,
-            "tagName": "wb数值单选",
+            "tagId": 55,
+            "tagName": "tag55数值单选整数型",
             "tagType": 1,
-            "tagValue": ["432"],
+            "tagValue": ["34"],
             "valueNumberOption": 0,
             "valueType": 4
         }, {
             "optionType": 0,
-            "tagId": 249,
-            "tagName": "wb数值多选",
+            "tagId": 66,
+            "tagName": "tag66数值多选小数型",
             "tagType": 1,
-            "tagValue": ["5432", "54", "434", "342", "543245454"],
+            "tagValue": ["322.2312", "34.34"],
             "valueNumberOption": 1,
             "valueType": 4
         }, {
             "optionType": 0,
-            "tagId": 242,
-            "tagName": "10",
+            "tagId": 77,
+            "tagName": "tag77日期年月日类型",
             "tagType": 1,
             "tagValue": ["2019-09-11"],
             "valueNumberOption": 1,
             "valueType": 0
         }, {
             "optionType": 1,
-            "tagId": 243,
-            "tagName": "wb日期年月",
+            "tagId": 555,
+            "tagName": "tag555日期年月型",
             "tagType": 1,
             "tagValue": ["2048-02"],
             "valueNumberOption": 1,

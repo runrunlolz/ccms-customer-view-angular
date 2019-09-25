@@ -3,21 +3,27 @@
 	<div class="customer-label-title" ng-if="!vm.showLoading">
 		<!--云标签：未打标、未订阅则不显示-->
 		<div class="cloud-tag-area" ng-if="vm.cloudTag.length">
-			<ul>
-				<span>云标签：</span>
-				<li class="cloud-tag" ng-repeat="tag in vm.cloudTag">{{tag.tagName}}:{{tag.tagValue}}</li>
+			<ul class="tag-list">
+				<li class="tag-type-label">云标签：</li>
+				<li class="cloud-tag tag-item"
+					ng-repeat="tag in vm.cloudTag"
+					cc-tooltip="tag.width > 900 ? tag.valueType === 2 || tag.valueType === 4 ? tag.tagValue.join('、') : tag.valueType === 0 ? tag.tagValue[0] : tag.tagValue : ''">
+					{{tag.tagName}}：{{tag.valueType === 2 || tag.valueType === 4 ? tag.tagValue.join('、') : tag.valueType === 0 ? tag.tagValue[0] : tag.tagValue}}
+				</li>
 			</ul>
 		</div>
 
-		<div class="define-tag-area">
+		<div class="define-tag-area" ng-if="vm.canSelectedTagList.length">
 			<!--自定义标签：无标签则提示创建标签，未打标则提示打标-->
-			<ul ng-class="{'hide-more-item': vm.tagHeight() > 56 && !vm.showMoreTag}">
-				<span>自定义标签：</span>
+			<ul id="tagList">
+				<li class="tag-type-label">自定义标签：</li>
 				<li class="add-tag" ng-click="vm.openDefineTagModal('add', null)">
 					<span><icon-add></icon-add>打标签</span>
 				</li>
 				<li ng-if="vm.defineTag.length"
-					class="define-tag"
+					class="define-tag tag-item"
+					cc-tooltip="tag.width > 900 ? tag.valueType === 2 || tag.valueType === 4 ? tag.tagValue.join('、') : tag.valueType === 0 ? tag.tagValue[0] : tag.tagValue : ''"
+					tooltip-append-to-body="true"
 					ng-repeat="tag in vm.defineTag">
 					<span class="define-tag-name" ng-click="vm.openDefineTagModal('edit', tag)">
 						{{tag.tagName}}：{{tag.valueType === 2 || tag.valueType === 4 ? tag.tagValue.join('、') : tag.valueType === 0 ? tag.tagValue[0] : tag.tagValue}}
@@ -25,7 +31,7 @@
 					<icon-close ng-click="vm.deleteTag(tag.tagId)"></icon-close>
 				</li>
 			</ul>
-			<a class="toggle-show" ng-if="vm.tagHeight() > 56" ng-click="vm.toggleShowTag()">
+			<a class="toggle-show" ng-if="!vm.hidMore" ng-click="vm.toggleShowTag()">
 				<span  ng-if="!vm.showMoreTag">
 					展开全部
 					<icon-arrow></icon-arrow>

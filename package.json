@@ -1,7 +1,7 @@
 {
     "name": "ccms-customer-view-angular",
-    "version": "0.1.19",
-    "description": "ccms-customer-view angular版本",
+    "version": "0.1.2",
+    "description": "ccms-customer-view angular测试版本",
     "main": "index.js",
     "scripts": {
         "start": "npm run mock & node ./server.js",
@@ -10,16 +10,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/BoWang816/ccms-customer-view-angular.git"
+        "url": "git+https://github.com/ShuyunFF2E/ccms-customer-view.git"
     },
     "author": "baukh",
     "license": "MIT",
-    "homepage": "https://github.com/BoWang816/ccms-customer-view-angular#readme",
+    "homepage": "https://github.com/ShuyunFF2E/ccms-customer-view#readme",
     "bugs": {
-        "url": "https://github.com/BoWang816/ccms-customer-view-angular/issues"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/@BoWang816"
+        "url": "https://github.com/ShuyunFF2E/ccms-customer-view/issues"
     },
     "devDependencies": {
         "@babel/cli": "^7.0.0",
@@ -46,7 +43,7 @@
         "less-loader": "^4.1.0",
         "mini-css-extract-plugin": "^0.5.0",
         "optimize-css-assets-webpack-plugin": "^5.0.1",
-        "generate-version-webpack-plugin": "^0.1.3",
+		"generate-version-webpack-plugin": "^0.1.3",
         "resolve-url-loader": "^3.0.0",
         "style-loader": "^0.20.3",
         "uglifyjs-webpack-plugin": "^2.1.1",

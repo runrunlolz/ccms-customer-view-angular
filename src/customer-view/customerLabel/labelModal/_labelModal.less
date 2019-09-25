@@ -42,22 +42,16 @@
 				line-height: 30px;
 			}
 			.select-item {
+				margin-left: 35px;
 				.label-name {
 					display: inline-block;
 					cursor: pointer;
 					margin-right: 20px;
 					> input {
-						height: 32px;
-						line-height: 30px;
 						margin-right: 5px;
 					}
 					.tag-name {
-						display: inline-block;
-						width: 50px;
-						overflow: hidden;
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						vertical-align: top;
+						display: inline-block
 					}
 				}
 			}
@@ -67,6 +61,7 @@
 				width: 220px;
 				> input {
 					width: inherit;
+					padding-right: 25px;
 				}
 				icon-jiantouzuo, icon-jiantouyou {
 					display: block;
@@ -80,8 +75,16 @@
 				}
 			}
 		}
+		.select-tag-label {
+			width: 100%;
+			text-align: left;
+			padding-left: 35px;
+		}
 		.disableEdit {
 			pointer-events: none;
+			.disableInput {
+				background: #EEEEEE;
+			}
 		}
 	}
 }

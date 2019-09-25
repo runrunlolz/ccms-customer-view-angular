@@ -51,8 +51,8 @@ const setComponentResource = api_prefix => {
 		// 获取标签类型列表
 		getTagTypeList: genResource(`${api_prefix}customerTag/tagTypes`),
 
-		// 获取标签详细信息
-		getTagValueInfo: genResource(`${api_prefix}tagManage/tagInfo/:tagId`),
+		// 获取标签详细信息,1表示类型为自定义标签
+		getTagValueInfo: genResource(`${api_prefix}tagManage/tagInfo/1/:tagId`),
 
 		// 自定义标签列表
 		TagInfoList: genResource(`${api_prefix}tagManage/1/groupInfo`),
